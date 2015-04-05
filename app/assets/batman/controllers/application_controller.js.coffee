@@ -1,0 +1,1 @@
+class Movieman.ApplicationController extends Batman.Controller

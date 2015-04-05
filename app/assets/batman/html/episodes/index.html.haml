@@ -1,0 +1,25 @@
+%a{"data-route" => "routes.episodes"} Episodes
+|
+%a{"data-route" => "routes.favorites"} Favorites
+
+%table
+  %thead
+    %tr
+      %th photo
+      %th name
+      %th episode
+      %th date
+  %tbody
+    %tr{"data-foreach-episode" => "episodes"}
+      %td
+        %img{"data-bind-src" => "episode.photo"}/
+      %td
+        %a{"data-bind" => "episode.name", "data-bind-href" => "episode.url"}
+      %td
+        s.
+        %span{"data-bind" => "episode.last_season"}
+        e.
+        %span{"data-bind" => "episode.last_episode"}
+      %td
+        %span{"data-bind" => "episode.updated_at"}
+  %table

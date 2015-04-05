@@ -1,0 +1,14 @@
+defaults: &defaults
+  domain_name: <domain>
+  action_mailer:
+    email:    <email>
+    password: <password>
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
