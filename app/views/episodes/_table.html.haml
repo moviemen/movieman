@@ -1,0 +1,13 @@
+- model_class = Episode
+%table.table.table-condensed.table-fixedheader
+  %thead
+    %tr.success
+      %th= model_class.human_attribute_name(:photo)
+      %th= model_class.human_attribute_name(:name)
+      %th= model_class.human_attribute_name(:last_episode)
+      %th Last updates
+      %th &nbsp;
+  %tbody.episodes
+    = render partial: 'episode', collection: @episodes
+  %tfooter.hidden
+    = will_paginate @episodes

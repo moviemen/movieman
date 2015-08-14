@@ -1,0 +1,17 @@
+- if current_user.view_mode == 0
+  %tr
+    %td= image_tag episode.photo, alt: episode.name, size: "100x150"
+    %td= episode.name
+    %td= "s.#{episode.last_season} e.#{episode.last_episode}"
+    %td= episode.created_at.strftime("%d.%m.%Y %I:%M %p")
+    %td= link_to "watch now", episode.url, :class => 'btn btn-success btn-xs'
+- else
+  .thumbnail.pull-left
+    %p.top
+      %span.has-tooltip{"data-placement" => "top", "data-toggle" => "tooltip", :title => "#{episode.created_at.strftime('%d.%m.%Y %I:%M %p')}"}
+      %span.last_epidode s.#{episode.last_season} e.#{episode.last_episode}
+      = link_to "<span class='glyphicon glyphicon-expand'></span>".html_safe, episode.url, class: "pull-right"
+    = image_tag episode.photo, alt: episode.name, class: "episode_photo"
+    %p.bottom
+      %span.episode_name
+        = episode.name.size < 20 ? episode.name : "#{episode.name[0..18]}..."

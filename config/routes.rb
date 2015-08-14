@@ -1,15 +1,23 @@
 Rails.application.routes.draw do
 
-  get "(*redirect_path)", to: "batman#index", constraints: lambda { |request| request.format == "text/html" }
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    omniauth_callbacks: 'users/omniauth_callbacks'
+  }
 
-  get 'episodes'  => 'episodes#index'
-  get 'favorites' => 'episodes#my'
-  
+  get 'episodes/index'  => 'episodes#index'
+  get 'list'      => 'episodes#table'
+  get 'blocks'    => 'episodes#blocks'
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'episodes#index'
+
+  #match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
+
+  #devise_scope :user do
+  #  get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  #end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,17 +1,32 @@
 class EpisodesController < ApplicationController
-  respond_to :json
 
+  # GET /episodes/index
   def index
-    respond_with Episode.all
+    @episodes = Episode.paginate(:page => params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
-  def my
-    respond_with User.first.episodes
+  def blocks
+    set_view_mode 1
+    redirect_to   root_path
+  end
+
+  def table
+    set_view_mode 0
+    redirect_to   root_path
   end
 
   private
 
-  def post_params
-    params.require(:post).permit(:name, :url, :photo, :last_season, :last_episode, :updated_at)
-  end
+    def set_view_mode mode=0
+      current_user.update(view_mode: mode)
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def episode_params
+      params[:episode]
+    end
 end

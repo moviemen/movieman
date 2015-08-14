@@ -11,7 +11,11 @@ class FsStrategy
 
   def check_for_updates
     @page_number = 1
-    parse_page
+    begin
+      parse_page
+    rescue
+      puts "\nTHE ERROR."
+    end
     puts "\nTHE END."
   end
 
@@ -25,7 +29,7 @@ class FsStrategy
       s_url   = 'http://fs.to' + series.search('.b-poster-tile__link').attr('href').value
       s_name  = series.search('.b-poster-tile__title-full').text.gsub(/\t/, '').gsub(/\n/, '')
       updates = parse_episode_page(s_url)
-      parsed_episode = Episode.new( name: s_name, url: s_url, last_season:  updates[:season], last_episode: updates[:episode] )
+      parsed_episode = Episode.new( name: s_name, url: s_url, last_season:  updates[:season], last_episode: updates[:episode], photo: updates[:photo])
       update_episode parsed_episode if parsed_episode.last_season && parsed_episode.last_episode
     end
 
@@ -37,7 +41,8 @@ class FsStrategy
     series_page = @mechanize.get( url )
     tmp_arr  = series_page.search('.l-tab-item-content table').text # 'сезон 05 серия 04'
     tmp_arr2 = tmp_arr.split('сезон ')[1].split(' ')
-    {season: tmp_arr2[0].to_i, episode: tmp_arr2[2].to_i}
+    photo = series_page.search('.l-left .poster-main .images-show img').attr('src')
+    {season: tmp_arr2[0].to_i, episode: tmp_arr2[2].to_i, photo: photo}
   end
 
   private

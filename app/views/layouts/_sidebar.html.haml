@@ -1,0 +1,7 @@
+#sidebar.sidebar-nav
+  %div
+    = image_tag "logo.png", class: "center-block logo", size: "250x250"
+  
+  - if user_signed_in?
+    = render 'layouts/sidebar_settings'
+    = render 'layouts/sidebar_footer'

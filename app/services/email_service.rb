@@ -1,8 +1,8 @@
 class EmailService
 
-  def self.notify episode_id
-    Episode.find(episode_id).users.pluck(:email).each do |email| 
-      NotificationMailer.new_episode_added(episode_id, email).deliver
+  def self.notify episode
+    episode.users.pluck(:email).each do |email| 
+      EmailNotificationJob.new(episode.id, email).enqueue(wait: 10.seconds)
     end
   end
 

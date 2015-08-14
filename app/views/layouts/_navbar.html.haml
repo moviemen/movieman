@@ -1,0 +1,14 @@
+.navbar.navbar-static-top
+  .container
+    %ul.nav.navbar-nav
+      %li
+        = link_to "<span class='glyphicon glyphicon-th-list'></span>".html_safe, list_path
+      %li
+        = link_to "<span class='glyphicon glyphicon-th'></span>".html_safe, blocks_path
+
+    .row.navbar-right
+      .col-lg-offset-2.col-lg-10
+        .input-group
+          %input#search-input.form-control{:placeholder => "Search for...", :type => "text"}/
+          %span.input-group-btn
+            %button.btn.btn-default{:type => "button"} Search

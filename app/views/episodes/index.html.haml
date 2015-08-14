@@ -1,0 +1,12 @@
+#table_box.col-lg-11
+  
+  .tab-content
+    #films-r.tab-pane.active
+      = render (current_user.view_mode == 0 ? 'table' : 'blocks')
+    #series-r.tab-pane
+      = render (current_user.view_mode == 0 ? 'table' : 'blocks')
+    #favorites-r.tab-pane
+      = render (current_user.view_mode == 0 ? 'table' : 'blocks')
+      
+.col-lg-1
+  = render 'tabs'

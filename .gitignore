@@ -20,3 +20,7 @@
 /log/*
 !/log/.keep
 /tmp
+
+.crt
+.key
+.yml

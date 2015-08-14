@@ -1,0 +1,16 @@
+@import "growlyflash";
+
+.note {
+    position: absolute;
+    z-index: 1050;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    line-height: 1.2;
+    overflow: hidden; 
+    -webkit-box-shadow: 0 0 5px black;
+    -moz-box-shadow:    0 0 5px black;
+    box-shadow:         0 0 5px black;
+    margin-bottom: 0px;
+}

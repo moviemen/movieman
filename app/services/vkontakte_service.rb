@@ -1,9 +1,17 @@
+require 'open-uri'
+
 class VkontakteService
 
-  def self.notify episode_id
+  def self.notify episode
     # here will be vk messages
-    users = Episode.find(episode_id).users.pluck(:email)
-    puts "Vkontakte Notification was sent to #{users.to_s}"
+    user = Identity.first
+    
+    params = "user_id=#{user.uid}&message=notification+text";
+    token = "access_token=#{user.oauth_token}";
+    method = "messages.send";
+    request = "https://api.vk.com/method/"+ method +"?"+ params +"&"+ token;
+
+    response = open(request).read
   end
 
 end

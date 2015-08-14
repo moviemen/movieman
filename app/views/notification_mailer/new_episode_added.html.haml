@@ -1,2 +1,7 @@
-%h2
-  New episode of #{@episode.name} series is released. Go to this link to watch it: #{@episode.url}
+%img{src: "#{@episode.photo}"}
+%p
+  New episode of 
+  %b #{@episode.name} 
+  series is released. Go to this link to watch it: 
+%p
+  #{@episode.url}

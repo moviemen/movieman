@@ -8,22 +8,24 @@ Bundler.require(*Rails.groups)
 
 module Movieman
   class Application < Rails::Application
-
+    config.force_ssl = true
+    
     config.assets.precompile += ['movieman.js']
-
+    
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    config.autoload_paths << Rails.root.join('lib')
     
     config.autoload_paths += Dir[Rails.root.join('app', 'strategies', '*')]
     config.autoload_paths += Dir[Rails.root.join('app', 'services',   '*')]
+    config.autoload_paths += Dir[Rails.root.join('app', 'validators', '*')]
+
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    # config.time_zone = 'Central Time (US & Canada)'
-    
-    # queue
-    onfig.active_job.queue_adapter = :rescue
+    config.time_zone = 'Kyiv'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]

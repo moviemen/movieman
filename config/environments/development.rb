@@ -18,12 +18,13 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries     = true
 
   config.action_mailer.delivery_method = :smtp
- 
+
+  config.action_mailer.default_url_options = { :host => 'https://movie-man.club' }
   settings = YAML.load(File.read("#{Rails.root}/config/application.yml")).with_indifferent_access['development']
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               settings[:domain_name],
+    domain:               'gmail.com',
     user_name:            settings[:action_mailer][:email],
     password:             settings[:action_mailer][:password],
     authentication:       'plain',
