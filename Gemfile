@@ -27,6 +27,16 @@ gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'haml-rails'
+gem 'twitter-bootstrap-rails'
+gem 'bootstrap-material-design'
+gem 'therubyracer'
+
+gem 'activemodel-serializers-xml' # draper spike https://github.com/drapergem/draper/issues/697
+gem 'draper', github: 'audionerd/draper', branch: 'rails5'
+
+gem 'sidekiq'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
