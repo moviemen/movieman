@@ -41,15 +41,32 @@ gem 'sidekiq'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+   gem 'byebug'
+  gem 'rspec-rails'
+  gem 'rspec-activejob'
+  gem 'rspec-sidekiq'
+  gem 'rspec-retry'
+  gem 'capybara'
+  gem 'site_prism'
+  gem 'parallel_tests'
+  gem 'pry'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'phantomjs'
+  gem 'poltergeist'
+  gem 'timecop'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 3.0'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'railroady'
+  gem 'html2haml'
+  gem 'transpec'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
