@@ -15,12 +15,18 @@ Rails.application.configure do
   # Enable/disable caching. By default caching is disabled.
   if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
+
+    config.action_mailer.perform_caching = false
+
     config.cache_store = :memory_store
     config.public_file_server.headers = {
       'Cache-Control' => 'public, max-age=172800'
     }
   else
     config.action_controller.perform_caching = false
+
+    config.action_mailer.perform_caching = false
+
     config.cache_store = :null_store
   end
 
@@ -30,8 +36,9 @@ Rails.application.configure do
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
-  # Raise an error on page load if there are pending migrations.
-  config.active_record.migration_error = :page_load
+  config.generators do |g|
+    g.orm :mongoid
+  end
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
@@ -52,5 +59,5 @@ Rails.application.configure do
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
-  # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end
