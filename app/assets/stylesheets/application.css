@@ -6,54 +6,10 @@
  * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
  *
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
  *
- *= require twitter-bootstrap-static/bootstrap
- *= require twitter-bootstrap-static/fontawesome 
  *= require_tree .
-
  *= require_self
  */
-
-@font-face {
-  font-family: 'Glyphicons Halflings';
-  src: url('/assets/glyphicons-halflings-regular.eot');
-  src: url('/assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('/assets/glyphicons-halflings-regular.woff') format('woff'), url('/assets/glyphicons-halflings-regular.ttf') format('truetype'), url('/assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
-}
-
-.container {
-  width: 100%;
-}
-
-.container .row .col-lg-9 .navbar-static-top {
-  margin-top: 20px;
-  margin-right: 50px;
-}
-
-.sidebar-settings {
-  margin-left: 50px;
-  margin-top: 50px;
-}
-
-.logo {
-  margin-top: 50px;
-}
-
-.glyphicon {
-  font-size: 1.6em;
-}
-
-#search-input {
-  min-width: 250px;
-}
-
-.navbar-fixed-bottom small {
-  color: grey;
-}
-
-.episodes {
-  overflow-y: scroll;
-}
-

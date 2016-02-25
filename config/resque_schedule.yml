@@ -1,6 +1,0 @@
-check_fs_updates:
-  queue: fs_updates
-  every: "1h"
-  class: CheckFsUpdatesJob
-  args:
-  description: check for a series udpates on fs.to
