@@ -1,0 +1,28 @@
+.page-header
+  %h1 Source
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th id
+      %th link
+      %th media_id
+      %th season
+      %th eposode
+      %th created_at
+      %th actions
+
+  %tbody
+    - @sources.each do |source|
+      %tr
+        %td= link_to source.id, source_path(source)
+        %td= source.link
+        %td= source.media_id
+        %td= source.season
+        %td= source.eposode
+        %td=l source.created_at
+        %td
+          = link_to 'edit',    edit_source_path(source), class: 'btn btn-default btn-xs'
+          = link_to 'destroy', source_path(source),      class: 'btn btn-xs btn-danger', method: :delete, data: {confirm: 'Are you sure?'}
+
+= link_to 'new', new_source_path, class: 'btn btn-primary'

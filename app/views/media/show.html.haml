@@ -1,0 +1,16 @@
+.page-header
+  %h1 Media
+
+%p
+  %strong type
+  %br
+  = @media.type
+
+%p
+  %strong name
+  %br
+  = @media.name
+
+= link_to 'back',    media_index_path,        class: 'btn btn-default'
+= link_to 'edit',    edit_media_path(@media), class: 'btn btn-default'
+= link_to 'destroy', media_path(@media),      class: 'btn btn-danger', method: 'delete', data: {confirm: 'Are you sure?'}

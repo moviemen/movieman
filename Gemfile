@@ -21,7 +21,6 @@ gem 'turbolinks',   '~> 5.x'
 
 gem 'haml-rails'
 gem 'twitter-bootstrap-rails'
-gem 'bootstrap-material-design'
 
 group :development, :test do
   gem 'byebug'

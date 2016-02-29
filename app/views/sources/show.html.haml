@@ -1,0 +1,26 @@
+.page-header
+  %h1 Source
+
+%p
+  %strong link
+  %br
+  = @source.link
+
+%p
+  %strong media_id
+  %br
+  = @source.media_id
+
+%p
+  %strong season
+  %br
+  = @source.season
+
+%p
+  %strong eposode
+  %br
+  = @source.eposode
+
+= link_to 'back',    sources_path,              class: 'btn btn-default'
+= link_to 'edit',    edit_source_path(@source), class: 'btn btn-default'
+= link_to 'destroy', source_path(@source),      class: 'btn btn-danger', method: 'delete', data: {confirm: 'Are you sure?'}

@@ -1,0 +1,16 @@
+.page-header
+  %h1 Synonym
+
+%p
+  %strong name
+  %br
+  = @synonym.name
+
+%p
+  %strong media_id
+  %br
+  = @synonym.media_id
+
+= link_to 'back',    synonyms_path,               class: 'btn btn-default'
+= link_to 'edit',    edit_synonym_path(@synonym), class: 'btn btn-default'
+= link_to 'destroy', synonym_path(@synonym),      class: 'btn btn-danger', method: 'delete', data: {confirm: 'Are you sure?'}
