@@ -7,4 +7,7 @@ class Media
 
   has_many :sources
   has_many :synonyms
+
+  scope :movies,    -> { where(type: 'movie')  }
+  scope :tv_series, -> { where(type: 'series') }
 end

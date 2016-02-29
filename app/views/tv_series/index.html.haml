@@ -1,0 +1,10 @@
+- @tv_series.in_groups_of(6).each do |group|
+  .row
+    - group.compact.each do |tv_series|
+      .col-xs-2.col-sm-2.col-md-2.col-lg-2
+        .thumbnail
+          %p
+            %small.pull-left= link_to tv_series.name, tv_series.sources.last.link
+          %img{alt: tv_series.name, src: 'http://img.dotua.org/fsua_items/cover/00/41/28/2/00412877.jpg'}
+          %p
+            %small.pull-right= link_to "s.#{tv_series.sources.last.season} e.#{tv_series.sources.last.episode}", tv_series.sources.last.link

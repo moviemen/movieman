@@ -19,6 +19,7 @@ gem 'therubyracer'
 gem 'jquery-rails'
 gem 'turbolinks',   '~> 5.x'
 
+gem 'twitter-bootstrap-rails'
 gem 'haml-rails'
 
 group :development, :test do
@@ -45,8 +46,6 @@ group :test do
 end
 
 group :development do
-  gem 'twitter-bootstrap-rails'
-
   gem 'web-console', '~> 3.0'
   gem 'listen',      '~> 3.0.5'
 

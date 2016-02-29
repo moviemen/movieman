@@ -1,0 +1,10 @@
+- @movies.in_groups_of(6).each do |group|
+  .row
+    - group.compact.each do |movie|
+      .col-xs-2.col-sm-2.col-md-2.col-lg-2
+        .thumbnail
+          %p
+            %small.pull-left= link_to movie.name, movie.sources.last.link
+          %img{alt: movie.name, src: 'http://img.dotua.org/fsua_items/cover/00/41/28/2/00412877.jpg'}
+          %p
+            %small.pull-right= link_to "s.#{movie.sources.last.season} e.#{movie.sources.last.episode}", movie.sources.last.link
