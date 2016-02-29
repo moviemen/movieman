@@ -22,6 +22,7 @@ gem 'turbolinks',   '~> 5.x'
 gem 'twitter-bootstrap-rails'
 gem 'haml-rails'
 gem 'devise', git: 'git://github.com/plataformatec/devise.git', branch: 'master'
+gem 'bootstrap_form'
 
 group :development, :test do
   gem 'byebug'
