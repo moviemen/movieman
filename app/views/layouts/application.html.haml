@@ -19,7 +19,7 @@
     = javascript_include_tag 'application'
 
   %body
-    .navbar.navbar-default.navbar-static-top
+    .navbar.navbar-default.navbar-fixed-top
       .container
         %button.navbar-toggle{type: 'button', 'data-toggle': 'collapse', 'data-target': '.navbar-responsive-collapse'}
           %span.icon-bar
@@ -34,7 +34,8 @@
     .container
       .row
         .col-lg-3
-          #sidebar.well.sidebar-nav
+          #sidebar.sidebar-nav
+            = image_tag 'logo.png', class: 'center-block logo'
             %ul.nav.nav-list
               %li= link_to 'Movies',    '/movies'
               %li= link_to 'TV Series', '/tv_series'
