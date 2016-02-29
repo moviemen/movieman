@@ -34,13 +34,12 @@
     .container
       .row
         .col-lg-3
-          .sidebar-nav.hidden-xs.hidden-sm.hidden-md
+          .sidebar-nav
             = image_tag 'logo.png', class: 'logo'
             %ul.nav.nav-list
               %li= link_to 'Movies',    '/movies'
               %li= link_to 'TV Series', '/tv_series'
 
         .col-lg-9
-          .center-block
-            = bootstrap_flash
-            = yield
+          = bootstrap_flash
+          = yield
