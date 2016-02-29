@@ -28,21 +28,11 @@
         %a.navbar-brand{href: '#'} Movieman
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
-            %li= link_to 'Media',    '/media'
-            %li= link_to 'Sources',  '/sources'
-            %li= link_to 'Synonyms', '/synonyms'
+            %li= link_to 'Movies',    '/media'
+            %li= link_to 'TV Series', '/media'
 
     .container
       .row
-        .col-lg-3
-          .well.sidebar-nav
-            /%h3 Sidebar
-            %ul.nav.nav-list
-              /%li.nav-header Sidebar
-              %li= link_to 'Media',    '/media'
-              %li= link_to 'Sources',  '/sources'
-              %li= link_to 'Synonyms', '/synonyms'
-
-        .col-lg-9
+        .col-lg-12
           = bootstrap_flash
           = yield
