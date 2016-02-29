@@ -335,7 +335,6 @@ DEPENDENCIES
   transpec
   turbolinks (~> 5.x)
   twitter-bootstrap-rails
-  tzinfo-data
   uglifier (>= 1.3.0)
   vcr
   web-console (~> 3.0)

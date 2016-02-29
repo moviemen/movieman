@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   resources :media
   resources :synonyms
   resources :sources
@@ -6,4 +7,5 @@ Rails.application.routes.draw do
 
   # Serve websocket cable requests in-process
   # mount ActionCable.server => '/cable'
+  root to: 'media#index'
 end

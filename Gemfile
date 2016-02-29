@@ -20,7 +20,6 @@ gem 'jquery-rails'
 gem 'turbolinks',   '~> 5.x'
 
 gem 'haml-rails'
-gem 'twitter-bootstrap-rails'
 
 group :development, :test do
   gem 'byebug'
@@ -46,6 +45,8 @@ group :test do
 end
 
 group :development do
+  gem 'twitter-bootstrap-rails'
+
   gem 'web-console', '~> 3.0'
   gem 'listen',      '~> 3.0.5'
 
@@ -56,6 +57,3 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
