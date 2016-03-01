@@ -2,6 +2,6 @@
   .thumbnail
     %p
       %small.pull-left= link_to (tv_series.name.size > 15 ? "#{tv_series.name[0..15]}..." : tv_series.name), tv_series.sources.last.link
-    %img{alt: tv_series.name, src: 'http://img.dotua.org/fsua_items/cover/00/41/28/2/00412877.jpg'}
+    = image_tag "tv_series/#{tv_series.picture}", alt: tv_series.name, class: 'tv_series_picture'
     %p
       %small.pull-right= link_to "s.#{tv_series.sources.last.season} e.#{tv_series.sources.last.episode}", tv_series.sources.last.link

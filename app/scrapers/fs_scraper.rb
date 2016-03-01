@@ -9,11 +9,11 @@ class FsScraper
 
   def sync_media
     @page_number = 1
-    begin
+    #begin
       parse_page
-    rescue
-      puts "\nTHE ERROR."
-    end
+    #rescue
+    #  puts "\nTHE ERROR."
+    #end
     puts "\nTHE END."
   end
 
@@ -33,6 +33,7 @@ class FsScraper
         name:     s_name,
         type:     'tv_series',
         link:     s_url,
+        picture:  updates[:picture],
         season:   updates[:season],
         episode:  updates[:episode]
       }
@@ -48,13 +49,19 @@ class FsScraper
     series_page = @mechanize.get( url )
     tmp_arr  = series_page.search('.l-tab-item-content table').text # 'сезон 05 серия 04'
     tmp_arr2 = tmp_arr.split('сезон ')[1].split(' ')
-    photo = series_page.search('.l-left .poster-main .images-show img').attr('src')
-    {season: tmp_arr2[0].to_i, episode: tmp_arr2[2].to_i, photo: photo}
+    picture  = series_page.search('.l-left .poster-main .images-show img').attr('src').value
+    {season: tmp_arr2[0].to_i, episode: tmp_arr2[2].to_i, picture: picture}
   end
 
   def update_episode media
-
     parsed_media  = Media.where(name: media[:name], type: media[:type]).first_or_create!
+
+    if parsed_media.picture.nil?
+      picture_name = "#{parsed_media.id.to_s}#{File.extname(media[:picture])}"
+      @mechanize.get(media[:picture]).save( "#{Rails.root}/app/assets/images/tv_series/#{picture_name}" )
+      parsed_media.update(picture: picture_name)
+    end
+
     parsed_source = parsed_media.sources.where(name: /fs.to/).first
 
     if parsed_source
