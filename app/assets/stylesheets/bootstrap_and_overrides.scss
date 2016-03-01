@@ -28,26 +28,28 @@ body {
     padding-left:  40px;
   }
 
-  .thumbnail.for_media {
-    width:                 155px;
-    float:                 left;
-    margin-right:          10px;
-    display:               block;
-    border:                none;
-    -webkit-border-radius: 0px;
-    -moz-border-radius:    0px;
-    border-radius:         0px;
-    background-color:      rgba(0, 0, 0, 0.6);
+  .tv_series {
+    .thumbnail.for_media {
+      width:                 155px;
+      float:                 left;
+      margin-right:          10px;
+      display:               block;
+      border:                none;
+      -webkit-border-radius: 0px;
+      -moz-border-radius:    0px;
+      border-radius:         0px;
+      background-color:      rgba(0, 0, 0, 0.6);
 
-    .tv_series_name {
-      margin-left: 4px;
-      opacity:     1;
-    }
+      .tv_series_name {
+        margin-left: 4px;
+        opacity:     1;
+      }
 
-    .tv_series_picture {
-      max-width:  145px;
-      max-height: 200px;
-      opacity:    0.6 ;
+      .tv_series_picture {
+        max-width:  145px;
+        max-height: 200px;
+        opacity:    0.6 ;
+      }
     }
   }
 
