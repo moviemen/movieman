@@ -34,10 +34,8 @@
 
     .container
       .row
-        .col-md-3.col-lg-3.sidebar.hidden-xs.hidden-sm
-          .sidebar-nav
-            = image_tag 'logo.png', class: 'logo center-block'
-
-        .col-md-9.col-lg-9
+        .sidebar.hidden-xs.hidden-sm.hidden-md.col-lg-3
+          = image_tag 'logo.png', class: 'logo center-block'
+        .clo-xs-12.col-sm-12.col-md-12.col-lg-offset-3.col-lg-9
           = bootstrap_flash
           = yield

@@ -5,41 +5,20 @@
 
 .tv_series
   .row
-    .col-md-10.col-lg-10.medias
+    .medias.col-xs-12.col-sm-12.col-md-10.col-lg-11
 
       .tab-content
 
         #movies-r.tab-pane.active
-          - @tv_series.shuffle.each do |tv_series|
-            .thumbnail.for_media.pull-left
-              %p.tv_series_name
-                %small.text-white.pull-left= (tv_series.name.size > 15 ? "#{tv_series.name[0..15]}..." : tv_series.name)
-              = link_to tv_series.sources.last.link, class: 'text-primary' do
-                = image_tag "tv_series/#{tv_series.picture}", alt: tv_series.name, class: 'tv_series_picture'
-              %p
-                %small.text-white.pull-right s.#{tv_series.sources.last.season} e.#{tv_series.sources.last.episode}
+          = render partial: 'media', collection: @tv_series.shuffle
 
         #tv_series-r.tab-pane
-          - @tv_series.shuffle.each do |tv_series|
-            .thumbnail.for_media.pull-left
-              %p.tv_series_name
-                %small.text-white.pull-left= (tv_series.name.size > 15 ? "#{tv_series.name[0..15]}..." : tv_series.name)
-              = link_to tv_series.sources.last.link, class: 'text-primary' do
-                = image_tag "tv_series/#{tv_series.picture}", alt: tv_series.name, class: 'tv_series_picture'
-              %p
-                %small.text-white.pull-right s.#{tv_series.sources.last.season} e.#{tv_series.sources.last.episode}
+          = render partial: 'media', collection: @tv_series.shuffle
 
         #subscribes-r.tab-pane
-          - @tv_series.shuffle.each do |tv_series|
-            .thumbnail.for_media.pull-left
-              %p.tv_series_name
-                %small.text-white.pull-left= (tv_series.name.size > 15 ? "#{tv_series.name[0..15]}..." : tv_series.name)
-              = link_to tv_series.sources.last.link, class: 'text-primary' do
-                = image_tag "tv_series/#{tv_series.picture}", alt: tv_series.name, class: 'tv_series_picture'
-              %p
-                %small.text-white.pull-right s.#{tv_series.sources.last.season} e.#{tv_series.sources.last.episode}
+          = render partial: 'media', collection: @tv_series.shuffle
 
-    .col-md-2.col-lg-2.hidden-xs.hidden-sm.menu
+    .menu.hidden-xs.hidden-sm.col-md-2.col-lg-1
 
       %ul.nav.nav-tabs.tabs-right
         %li.menu_item.active

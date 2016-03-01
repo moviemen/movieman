@@ -1,0 +1,11 @@
+.thumbnail.for_media.pull-left
+
+  %h5.thumbnail_header.text-white.pull-left
+    = (media.name.size > 17 ? "#{media.name[0..16]}..." : media.name)
+
+  .thumbnail_body
+    = link_to media.sources.last.link, class: 'text-primary' do
+      = image_tag "#{media.type}/#{media.picture}", alt: media.name, class: 'tv_series_picture'
+
+  %h6.thumbnail_footer.text-white
+    %span.pull-right= "s #{media.sources.last.season} e #{media.sources.last.episode}"
