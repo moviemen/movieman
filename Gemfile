@@ -21,6 +21,9 @@ gem 'turbolinks',   '~> 5.x'
 
 gem 'twitter-bootstrap-rails'
 gem 'haml-rails'
+gem 'devise', git: 'git://github.com/plataformatec/devise.git', branch: 'master'
+gem 'bootstrap_form'
+gem 'cancancan', '~> 1.10'
 
 gem 'mechanize'
 

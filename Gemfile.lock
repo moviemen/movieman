@@ -1,4 +1,16 @@
 GIT
+  remote: git://github.com/plataformatec/devise.git
+  revision: 342304375946ca11608516eae80f78dbaae059d5
+  branch: master
+  specs:
+    devise (4.0.0.rc1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 5.1)
+      responders
+      warden (~> 1.2.3)
+
+GIT
   remote: https://github.com/estolfo/mongoid.git
   revision: 50f62bab23766c864bc1a12af60d002f6b66550e
   branch: MONGOID-4218-rails-5
@@ -53,9 +65,12 @@ GEM
     ast (2.2.0)
     astrolabe (1.3.1)
       parser (~> 2.2)
+    bcrypt (3.1.10)
+    bootstrap_form (2.3.0)
     bson (4.0.3)
     builder (3.2.2)
     byebug (8.2.2)
+    cancancan (1.13.1)
     capybara (2.6.2)
       addressable
       mime-types (>= 1.16)
@@ -137,7 +152,7 @@ GEM
     mime-types (2.99.1)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
-    mongo (2.2.3)
+    mongo (2.2.4)
       bson (~> 4.0)
     multi_json (1.11.2)
     net-http-digest_auth (1.4)
@@ -146,6 +161,7 @@ GEM
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     ntlm-http (0.1.1)
+    orm_adapter (0.5.0)
     parallel (1.6.2)
     parallel_tests (2.4.1)
       parallel
@@ -202,6 +218,8 @@ GEM
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
     ref (2.0.0)
+    responders (2.1.1)
+      railties (>= 4.2.0, < 5.1)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
       rspec-expectations (~> 3.1.0)
@@ -302,6 +320,8 @@ GEM
       unf_ext
     unf_ext (0.0.7.2)
     vcr (3.0.1)
+    warden (1.2.6)
+      rack (>= 1.0)
     web-console (3.1.1)
       activemodel (>= 4.2)
       debug_inspector
@@ -321,10 +341,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap_form
   byebug
+  cancancan (~> 1.10)
   capybara
   coffee-rails (~> 4.1.0)
   database_cleaner
+  devise!
   haml-rails
   html2haml
   jquery-rails
