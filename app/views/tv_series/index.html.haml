@@ -1,7 +1,8 @@
 - @tv_series.each do |tv_series|
   .thumbnail
+    %p.tv_series_name
+      %small.text-primary.pull-left= (tv_series.name.size > 15 ? "#{tv_series.name[0..15]}..." : tv_series.name)
+    = link_to tv_series.sources.last.link, class: 'text-primary' do
+      = image_tag "tv_series/#{tv_series.picture}", alt: tv_series.name, class: 'tv_series_picture'
     %p
-      %small.pull-left= link_to (tv_series.name.size > 15 ? "#{tv_series.name[0..15]}..." : tv_series.name), tv_series.sources.last.link
-    = image_tag "tv_series/#{tv_series.picture}", alt: tv_series.name, class: 'tv_series_picture'
-    %p
-      %small.pull-right= link_to "s.#{tv_series.sources.last.season} e.#{tv_series.sources.last.episode}", tv_series.sources.last.link
+      %small.text-primary.pull-right= link_to "s.#{tv_series.sources.last.season} e.#{tv_series.sources.last.episode}", tv_series.sources.last.link
