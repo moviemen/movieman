@@ -1,5 +1,5 @@
 - @movies.each do |movie|
-  .thumbnail
+  .thumbnail.for_media
     %p
-      %small.pull-left= link_to movie.name, movie.sources.last.link
+      %small.text-white.pull-left= link_to movie.name, movie.sources.last.link
     %img{alt: movie.name, src: 'http://img.dotua.org/fsua_items/cover/00/41/28/2/00412877.jpg'}

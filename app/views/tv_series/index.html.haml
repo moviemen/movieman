@@ -1,8 +1,14 @@
-- @tv_series.each do |tv_series|
-  .thumbnail
-    %p.tv_series_name
-      %small.text-primary.pull-left= (tv_series.name.size > 15 ? "#{tv_series.name[0..15]}..." : tv_series.name)
-    = link_to tv_series.sources.last.link, class: 'text-primary' do
-      = image_tag "tv_series/#{tv_series.picture}", alt: tv_series.name, class: 'tv_series_picture'
-    %p
-      %small.text-primary.pull-right= link_to "s.#{tv_series.sources.last.season} e.#{tv_series.sources.last.episode}", tv_series.sources.last.link
+%form.form-inline.search-form
+  .form-group-white.pull-right
+    %input.form-control.white-text{placeholder: 'Search', type: 'text'}
+    %span.glyphicon.glyphicon-search.link-white
+
+.tv_series
+  - @tv_series.each do |tv_series|
+    .thumbnail.for_media
+      %p.tv_series_name
+        %small.text-white.pull-left= (tv_series.name.size > 15 ? "#{tv_series.name[0..15]}..." : tv_series.name)
+      = link_to tv_series.sources.last.link, class: 'text-primary' do
+        = image_tag "tv_series/#{tv_series.picture}", alt: tv_series.name, class: 'tv_series_picture'
+      %p
+        %small.text-white.pull-right s.#{tv_series.sources.last.season} e.#{tv_series.sources.last.episode}

@@ -1,47 +1,77 @@
 /*
   = require twitter-bootstrap-static/bootstrap
-  = require twitter-bootstrap-static/fontawesome
+  = require twitter-bootstrap-static/sprites
   = require rails_bootstrap_forms
   = require bootstrap-material-design
 */
 
+// -------------------- global classes --------------------
+.text-white { 
+  color: #ffffff;
+}
+
+.link-white, .link-white:hover, .link-white:focus { 
+  color:            #ffffff;
+  background-color: none !important;
+  text-decoration:  none;
+}
+// --------------------------------------------------------
+
 body {
-  padding-top: 70px;
+  background:      url('bg.jpg') no-repeat;
+  background-size: 100%;
+  padding-top:     20px;
 
   .container {
     width: 100%;
+    padding-right: 40px;
+    padding-left:  40px;
   }
 
-  .thumbnail {
-    width:         155px;
-    float:         left;
-    margin-right:  10px;
-    display:       block;
-    border:        none;
-    background:    none;
+  .thumbnail.for_media {
+    width:                 155px;
+    float:                 left;
+    margin-right:          10px;
+    display:               block;
+    border:                none;
+    -webkit-border-radius: 0px;
+    -moz-border-radius:    0px;
+    border-radius:         0px;
+    background-color:      rgba(0, 0, 0, 0.6);
 
     .tv_series_name {
       margin-left: 4px;
+      opacity:     1;
     }
 
     .tv_series_picture {
       max-width:  145px;
       max-height: 200px;
+      opacity:    0.6 ;
     }
   }
 
   .sidebar {
     #background-color: rgba(0, 0, 0, 0.5);
 
-    .sidebar-nav {
-      min-width: 370px;
-
-      .logo {
-        margin-left:   55px;
-        margin-top:    40px;
-        margin-bottom: 40px;
-      }
+    .logo {
+      margin-top: 50px;
     }
+  }
+
+  .search-form {
+    min-height: 50px;
+
+    .form-control {
+      color: #ffffff;
+    }
+    .form-control::-moz-placeholder {
+      color: #ffffff;
+    }
+  }
+
+  .tv_series {
+    margin-top: 20px;
   }
 
 }
