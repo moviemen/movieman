@@ -28,7 +28,28 @@ body {
     padding-left:  40px;
   }
 
+  .sidebar {
+    #background-color: rgba(0, 0, 0, 0.5);
+
+    .logo {
+      margin-top: 50px;
+    }
+  }
+
+  .search-form {
+    min-height: 50px;
+
+    .form-control {
+      color: #ffffff;
+    }
+    .form-control::-moz-placeholder {
+      color: #ffffff;
+    }
+  }
+
   .tv_series {
+    margin-top: 10px;
+
     .thumbnail.for_media {
       width:                 155px;
       float:                 left;
@@ -51,29 +72,6 @@ body {
         opacity:    0.6 ;
       }
     }
-  }
-
-  .sidebar {
-    #background-color: rgba(0, 0, 0, 0.5);
-
-    .logo {
-      margin-top: 50px;
-    }
-  }
-
-  .search-form {
-    min-height: 50px;
-
-    .form-control {
-      color: #ffffff;
-    }
-    .form-control::-moz-placeholder {
-      color: #ffffff;
-    }
-  }
-
-  .tv_series {
-    margin-top: 20px;
   }
 
 }

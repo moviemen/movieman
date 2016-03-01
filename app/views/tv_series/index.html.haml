@@ -10,7 +10,7 @@
       .tab-content
 
         #movies-r.tab-pane.active
-          - @tv_series.each do |tv_series|
+          - @tv_series.shuffle.each do |tv_series|
             .thumbnail.for_media
               %p.tv_series_name
                 %small.text-white.pull-left= (tv_series.name.size > 15 ? "#{tv_series.name[0..15]}..." : tv_series.name)
@@ -43,7 +43,8 @@
 
       %ul.nav.nav-tabs.tabs-right
         %li.active
-          %a{'data-toggle': 'tab', href: '#movies-r'}     Home
+          %a{'data-toggle': 'tab', href: '#movies-r'}
+            %i.glyphicon.glyphicon-facetime-video
         %li
           %a{'data-toggle': 'tab', href: '#tv_series-r'}  TV Series
         %li
