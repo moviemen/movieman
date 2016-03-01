@@ -5,7 +5,7 @@
 
 .tv_series
   .row
-    .col-md-10.col-lg-10
+    .col-md-10.col-lg-10.medias
 
       .tab-content
 
@@ -39,15 +39,15 @@
               %p
                 %small.text-white.pull-right s.#{tv_series.sources.last.season} e.#{tv_series.sources.last.episode}
 
-    .col-md-2.col-lg-2.hidden-xs.hidden-sm
+    .col-md-2.col-lg-2.hidden-xs.hidden-sm.menu
 
       %ul.nav.nav-tabs.tabs-right
-        %li.active
+        %li.menu_item.active
           %a{'data-toggle': 'tab', href: '#movies-r'}
             =image_tag 'movies.png',     class: 'tab_icon_small'
-        %li
+        %li.menu_item
           %a{'data-toggle': 'tab', href: '#tv_series-r'}
             =image_tag 'tv_series.png',  class: 'tab_icon'
-        %li
+        %li.menu_item
           %a{'data-toggle': 'tab', href: '#subscribes-r'}
             =image_tag 'subscribes.png', class: 'tab_icon'

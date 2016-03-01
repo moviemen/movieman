@@ -50,6 +50,14 @@ body {
   .tv_series {
     margin-top: 10px;
 
+    .medias {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .menu {
+      padding-left: 0px;
+    }
+
     .thumbnail.for_media {
       width:                 155px;
       float:                 left;
@@ -59,7 +67,7 @@ body {
       -webkit-border-radius: 0px;
       -moz-border-radius:    0px;
       border-radius:         0px;
-      background-color:      rgba(0, 0, 0, 0.6);
+      background:            none;
 
       .tv_series_name {
         margin-left: 4px;
