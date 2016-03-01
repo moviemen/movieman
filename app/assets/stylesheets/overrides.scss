@@ -3,10 +3,15 @@
 }
 
 .thumbnail {
-  width: 155px;
-  float: left;
+  width:        155px;
+  float:        left;
   margin-right: 10px;
-  display: block;
+  display:      block;
+
+  .tv_series_picture {
+    max-width:  145px;
+    max-height: 200px;
+  }
 }
 
 .logo {
@@ -16,9 +21,4 @@
 
 body {
   padding-top: 70px;
-}
-
-.tv_series_picture {
-  max-width:  145px;
-  max-height: 200px;
 }
