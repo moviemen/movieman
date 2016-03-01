@@ -2,8 +2,6 @@ class Source
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  after_update :send_notification_after_change
-
   field :link,     type: String
   field :media_id, type: Integer
   field :season,   type: Integer, default: 0
@@ -11,18 +9,18 @@ class Source
 
   belongs_to :media
 
-  private
+  before_update :notify_subscribers, if: :episode_released?
 
-  def send_notification_after_change
-    s = season_changed?
-    binding.pry
+  protected
 
-    
+  def episode_released?
+    self.name_changed? or self.episode_changed?
+  end
 
-    # if season_changed? || episode_changed?
-
-    # user = media.subscribe.user
-    # mail(to: user.email, subject: 'Movie/TV Series update')
+  def notify_subscribers 
+    self.media.subscribes.pluck(:user_ids).each do |user_id|
+      SomeEmailJob.notify(user_id)
+    end
   end
 
 end

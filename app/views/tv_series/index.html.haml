@@ -11,7 +11,7 @@
 
         #movies-r.tab-pane.active
           - @tv_series.shuffle.each do |tv_series|
-            .thumbnail.for_media
+            .thumbnail.for_media.pull-left
               %p.tv_series_name
                 %small.text-white.pull-left= (tv_series.name.size > 15 ? "#{tv_series.name[0..15]}..." : tv_series.name)
               = link_to tv_series.sources.last.link, class: 'text-primary' do
@@ -21,7 +21,7 @@
 
         #tv_series-r.tab-pane
           - @tv_series.shuffle.each do |tv_series|
-            .thumbnail.for_media
+            .thumbnail.for_media.pull-left
               %p.tv_series_name
                 %small.text-white.pull-left= (tv_series.name.size > 15 ? "#{tv_series.name[0..15]}..." : tv_series.name)
               = link_to tv_series.sources.last.link, class: 'text-primary' do
@@ -31,7 +31,7 @@
 
         #subscribes-r.tab-pane
           - @tv_series.shuffle.each do |tv_series|
-            .thumbnail.for_media
+            .thumbnail.for_media.pull-left
               %p.tv_series_name
                 %small.text-white.pull-left= (tv_series.name.size > 15 ? "#{tv_series.name[0..15]}..." : tv_series.name)
               = link_to tv_series.sources.last.link, class: 'text-primary' do

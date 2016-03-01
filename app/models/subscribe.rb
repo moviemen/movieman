@@ -4,7 +4,6 @@ class Subscribe
 
   field :user_id,  type: Integer
 
-  belongs_to :user
-  has_one    :media
-
+  belongs_to :users
+  belongs_to :media
 end
