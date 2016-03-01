@@ -9,6 +9,6 @@ class Media
   has_many   :synonyms
   belongs_to :subscribe
 
-  scope :movies,    -> { where(type: 'movie')  }
-  scope :tv_series, -> { where(type: 'series') }
+  scope :movies,    -> { where(type: 'movie')     }
+  scope :tv_series, -> { where(type: 'tv_series') }
 end

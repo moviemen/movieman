@@ -25,6 +25,8 @@ gem 'devise', git: 'git://github.com/plataformatec/devise.git', branch: 'master'
 gem 'bootstrap_form'
 gem 'cancancan', '~> 1.10'
 
+gem 'mechanize'
+
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
