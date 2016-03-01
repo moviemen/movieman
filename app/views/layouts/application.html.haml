@@ -19,18 +19,18 @@
     = javascript_include_tag 'application'
 
   %body
-
-    .navbar.navbar-default.navbar-fixed-top.visible-xs.visible-sm
-      .container
-        %button.navbar-toggle{type: 'button', 'data-toggle': 'collapse', 'data-target': '.navbar-responsive-collapse'}
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-        .navbar-collapse.collapse.navbar-responsive-collapse
-          %ul.nav.navbar-nav
-            %li= link_to 'Movies',     '/movies'
-            %li= link_to 'TV Series',  '/tv_series'
-            %li= link_to 'Subscribes', '/subscribes'
+    .visible-xs.visible-sm
+      .page_head.navbar.navbar-default.navbar-fixed-top
+        .container
+          %button.navbar-toggle{type: 'button', 'data-toggle': 'collapse', 'data-target': '.navbar-responsive-collapse'}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          .navbar-collapse.collapse.navbar-responsive-collapse
+            %ul.nav.navbar-nav
+              %li= link_to 'Movies',     '/movies'
+              %li= link_to 'TV Series',  '/tv_series'
+              %li= link_to 'Subscribes', '/subscribes'
 
     .container
       .row
