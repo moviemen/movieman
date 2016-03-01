@@ -5,7 +5,6 @@ class Media
   field :type,         type: String
   field :name,         type: String
   field :picture,      type: String
-  field :subscribe_id, type: Integer
 
   has_many :sources
   has_many :synonyms
