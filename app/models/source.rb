@@ -14,12 +14,13 @@ class Source
   protected
 
   def episode_released?
-    self.name_changed? or self.episode_changed?
+    self.season_changed? or self.episode_changed?
   end
 
   def notify_subscribers
+    binding.pry
     self.media.subscribes.pluck(:user_id).each do |user_id|
-      SomeEmailJob.notify(user_id)
+      SomeEmailJob.notify user_id.to_s
     end
   end
 
