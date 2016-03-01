@@ -17,8 +17,8 @@ class Source
     self.name_changed? or self.episode_changed?
   end
 
-  def notify_subscribers 
-    self.media.subscribes.pluck(:user_ids).each do |user_id|
+  def notify_subscribers
+    self.media.subscribes.pluck(:user_id).each do |user_id|
       SomeEmailJob.notify(user_id)
     end
   end
