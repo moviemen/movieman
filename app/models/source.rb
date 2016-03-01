@@ -14,7 +14,11 @@ class Source
   private
 
   def send_notification_after_change
+    # if (link_changed? && ) || (season_changed?) || (episode_changed?)
 
+    user = self.media.subscribe.user
+
+    mail(to: user.email, subject: 'Movie/TV Series update')
   end
 
 end
