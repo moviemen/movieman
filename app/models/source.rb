@@ -18,7 +18,6 @@ class Source
   end
 
   def notify_subscribers
-    binding.pry
     self.media.subscribes.pluck(:user_id).each do |user_id|
       SomeEmailJob.notify user_id.to_s
     end
