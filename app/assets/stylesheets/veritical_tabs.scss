@@ -1,0 +1,45 @@
+.nav-tabs {
+    background: none;
+}
+
+.tabs-right {
+  border-bottom: none;
+  padding-top: 2px;
+}
+
+.tabs-right {
+  border-left: 1px solid #ddd;
+}
+
+.tabs-right > li {
+  float: none;
+  margin-bottom: 2px;
+}
+
+.tabs-right > li {
+  margin-left: -1px;
+}
+
+.tabs-right > li.active > a {
+  border-bottom: 1px solid #ddd;
+  border-left-color: transparent;
+  &:hover, &:focus {
+    border-bottom: 1px solid #ddd;
+    border-left-color: transparent;
+  }
+}
+
+.tabs-right > li > a {
+  border-radius: 0 4px 4px 0;
+  margin-right: 0;
+}
+
+.tab_icon {
+  width:  32px;
+  height: 32px;
+}
+
+.tab_icon_small {
+  width:  28px;
+  height: 28px;
+}
