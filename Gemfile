@@ -22,6 +22,8 @@ gem 'turbolinks',   '~> 5.x'
 gem 'twitter-bootstrap-rails'
 gem 'haml-rails'
 
+gem 'mechanize'
+
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
