@@ -9,11 +9,11 @@ class FsScraper
 
   def sync_media
     @page_number = 1
-    #begin
+    begin
       parse_page
-    #rescue
-    #  puts "\nTHE ERROR."
-    #end
+    rescue
+      puts "\nTHE ERROR."
+    end
     puts "\nTHE END."
   end
 

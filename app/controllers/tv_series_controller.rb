@@ -1,4 +1,5 @@
 class TvSeriesController < ApplicationController
+  before_action :authenticate_user!
 
   # GET /media
   def index
