@@ -16,11 +16,12 @@
   text-decoration:  none;
 }
 // --------------------------------------------------------
+html {
+  height: 100%;
+}
 
 body {
-  min-height: 100% !important;
-
-  background:              url('bg.jpg') no-repeat;
+  background:              url('bg.jpg');
   background-size:         100%;
   -moz-background-size:    100%;
   -webkit-background-size: 100%;
@@ -37,7 +38,7 @@ body {
     .sidebar {
       position:    absolute;
       margin-top:  -20px;
-      margin-left: -30px;
+      margin-left: -40px;
 
       min-height:       100% !important;
       background-color: rgba(0, 0, 0, 0.7);
@@ -67,7 +68,9 @@ body {
         .medias {
           background-color: rgba(0, 0, 0, 0.6);
           padding-top:    15px;
-          padding-bottom: 15px;
+          padding-bottom: 30px;
+
+          overflow-y : auto;
         }
 
         .menu {

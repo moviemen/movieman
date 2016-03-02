@@ -19,23 +19,14 @@
     = javascript_include_tag 'application'
 
   %body
-    .visible-xs.visible-sm
-      .page_head.navbar.navbar-default.navbar-fixed-top
-        .container
-          %button.navbar-toggle{type: 'button', 'data-toggle': 'collapse', 'data-target': '.navbar-responsive-collapse'}
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          .navbar-collapse.collapse.navbar-responsive-collapse
-            %ul.nav.navbar-nav
-              %li= link_to 'Movies',     '/movies'
-              %li= link_to 'TV Series',  '/tv_series'
-              %li= link_to 'Subscribes', '/subscribes'
-
+    
     .container
       .row
-        .sidebar.hidden-xs.hidden-sm.hidden-md.col-lg-3
-          = image_tag 'logo.png', class: 'logo center-block'
+    
+        - if signed_in?
+          .sidebar.hidden-xs.hidden-sm.hidden-md.col-lg-3
+            = image_tag 'logo.png', class: 'logo center-block'
+    
         .clo-xs-12.col-sm-12.col-md-12.col-lg-offset-3.col-lg-9
           = bootstrap_flash
           = yield
