@@ -9,7 +9,6 @@ class NotificationMailer < ActionMailer::Base
         #temporary body
         body:    "We are glad to inform you new episode #{episode} of #{media} came out."
     )
-
   end
 
   def new_season_email(user_id, season, media)

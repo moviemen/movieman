@@ -20,11 +20,11 @@ class Source
   def notify_subscribers
     self.media.subscribes.pluck(:user_id).each do |user_id|
       if premiere?
-        NewReleaseJob.new(user_id.to_s, self.media.name).enqueue(wait: 10.seconds)
+        NewReleaseJob.new(user_id.to_s, self.media.name).enqueue
       elsif new_episode_released?
-        NewEpisodeJob.new(user_id.to_s, self.media.name, self.episode).enqueue(wait: 10.seconds)
+        NewEpisodeJob.new(user_id.to_s, self.media.name, self.episode).enqueue
       elsif new_season_released?
-        NewSeasonJob.new(user_id.to_s, self.season, self.media.name).enqueue(wait: 10.seconds)
+        NewSeasonJob.new(user_id.to_s, self.season, self.media.name).enqueue
       end
     end
   end
