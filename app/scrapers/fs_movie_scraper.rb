@@ -25,7 +25,7 @@ class FsMovieScraper
     list.search('.b-section-list .b-poster-tile').each do |movies|
       s_url   = 'http://fs.to' + movies.search('.b-poster-tile__link').attr('href').value
       s_name  = movies.search('.b-poster-tile__title-full').text.gsub(/\t/, '').gsub(/\n/, '')
-      # updates = parse_episode_page(s_url)
+      updates = parse_movie_page(s_url)
 
       @media = {}
       @media = {
@@ -34,11 +34,50 @@ class FsMovieScraper
           link:     s_url,
           picture:  updates[:picture]
       }
-  #
-  #     update_episode @media if @media[:season] && @media[:episode]
+
+      update_movie @media if @media[:season] && @media[:episode]
     end
-  #
-  #   @page_number += 1
-  #   parse_page
+
+    @page_number += 1
+    parse_page
+  end
+
+
+    def parse_movie_page url
+      movie_page = @mechanize.get( url )
+      picture  = movie_page.search('.l-left .poster-main .images-show img').attr('src').value
+      {picture: picture}
+    end
+
+  def update_movie media
+    parsed_media  = Media.where(name: media[:name], type: media[:type]).first_or_create!
+
+    if parsed_media.picture.nil?
+      picture_name = "#{parsed_media.id.to_s}#{File.extname(media[:picture])}"
+      @mechanize.get(media[:picture]).save( "#{Rails.root}/app/assets/images/movies/#{picture_name}" )
+      parsed_media.update(picture: picture_name)
+    end
+
+    # parsed_source = parsed_media.sources.where(name: /fs.to/).first
+    #
+    # if parsed_source
+    #   if parsed_source.season.nil? || parsed_source.episode.nil?
+    #     parsed_source.update(season: media[:season], episode: media[:episode])
+    #     puts "UPDATES FOR #{parsed_source.media.name} - new episode #{parsed_source.episode}"
+    #   else
+    #     if media[:season] == parsed_source.season && media[:episode] > parsed_source.episode
+    #       parsed_source.update(season: media[:season], episode: media[:episode])
+    #       puts "UPDATES FOR #{parsed_source.media.name} - new episode #{parsed_source.episode}"
+    #     elsif media[:season] > parsed_source.season
+    #       parsed_source.update(season: media[:season], episode: media[:episode])
+    #       puts "UPDATES FOR #{parsed_source.media.name} - new episode #{parsed_source.episode}"
+    #     else
+    #       puts "NO CHANGES FOR #{parsed_source.media.name}"
+    #     end
+    #   end
+    # else
+    #   Source.create link: media[:link], season: media[:season], episode: media[:season], media_id: parsed_media.id
+    #   puts "CREATE new series #{parsed_media.name}"
+    # end
   end
 end
