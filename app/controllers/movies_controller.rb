@@ -1,8 +1,13 @@
 class MoviesController < ApplicationController
 
-  # GET /media
   def index
-    @movies = Media.movies.limit 10
+    @movies = Media.movies.paginate(page: movies_params[:page], limit: 10)
+  end
+
+  private
+
+  def movies_params
+    params.permit(:page)
   end
 
 end

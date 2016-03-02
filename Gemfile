@@ -28,6 +28,7 @@ gem 'haml-rails'
 gem 'devise', git: 'git://github.com/plataformatec/devise.git', branch: 'master'
 gem 'cancancan', '~> 1.10'
 
+gem 'mongoid-pagination'
 gem 'mechanize'
 
 group :development, :test do

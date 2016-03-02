@@ -1,6 +1,7 @@
 class Media
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Pagination
 
   field :type,         type: String
   field :name,         type: String
