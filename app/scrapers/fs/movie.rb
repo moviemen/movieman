@@ -1,4 +1,5 @@
-class FsMovieScraper
+class Fs::Movie
+
   def initialize
     @movies_page = 'http://fs.to/video/films/'
     @mechanize   = Mechanize.new
@@ -6,10 +7,10 @@ class FsMovieScraper
     @page        = nil
   end
 
-  def sync_media
+  def sync
     @page_number = 0
     #begin
-    parse_page
+      parse_page
     #rescue
     #  puts "\nTHE ERROR."
     #end
