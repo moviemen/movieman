@@ -19,22 +19,21 @@ class Source
 
   def notify_subscribers
     self.media.subscribes.pluck(:user_id).each do |user_id|
-      # SomeEmailJob.notify user_id.to_s
       if premiere?
-        SomeEmailJob.notify_about_release(user_id, self.media)
+        NewReleaseJob.new(user_id.to_s, self.media.name).enqueue(wait: 10.seconds)
       elsif new_episode_released?
-        SomeEmailJob.notify_about_new_episode(user_id, self.media)
-      elsif season_released?
-        SomeEmailJob.notify_about_new_season(user_id, self.media)
+        NewEpisodeJob.new(user_id.to_s, self.media.name, self.episode).enqueue(wait: 10.seconds)
+      elsif new_season_released?
+        NewSeasonJob.new(user_id.to_s, self.season, self.media.name).enqueue(wait: 10.seconds)
       end
     end
   end
 
   def premiere?
-    self.season_change.first.nil?
+    self.season_change.first.nil? if season_changed?
   end
 
-  def season_released?
+  def new_season_released?
     self.season_changed? and self.episode_changed?
   end
 
