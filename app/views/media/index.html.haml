@@ -9,13 +9,13 @@
     .tab-content.center-block
 
       #movies-r.tab-pane.active
-        = render partial: 'media', collection: @tv_series.shuffle
+        = render partial: 'media', collection: @media
 
       #tv_series-r.tab-pane
-        = render partial: 'media', collection: @tv_series.shuffle
+        = render partial: 'media', collection: @media
 
       #subscribes-r.tab-pane
-        = render partial: 'media', collection: @tv_series.shuffle
+        = render partial: 'media', collection: @media
 
   .menu.col-xs-2.col-sm-2.col-md-2.col-lg-1
 
