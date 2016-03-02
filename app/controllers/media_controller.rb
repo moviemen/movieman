@@ -2,12 +2,17 @@ class MediaController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @media = Media.tv_series.asc(:name).paginate(page: tv_series_params[:page], limit: 60)
+    @media = Media.tv_series.page(media_params[:page])
+
+    if request.xhr?
+      data = @media.map{ |media| render_to_string partial: 'media', locals: {media: media} }
+      render json: {status: 200, data: data.join(''), total: @media.count}
+    end
   end
 
   private
 
-  def tv_series_params
+  def media_params
     params.permit(:page)
   end
 

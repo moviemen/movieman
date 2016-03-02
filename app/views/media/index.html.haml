@@ -7,25 +7,22 @@
   .medias.col-xs-10.col-sm-10.col-md-10.col-lg-11
 
     .tab-content.center-block
-
-      #movies-r.tab-pane.active
+      #movies_tab.tab-pane.active
         = render partial: 'media', collection: @media
-
-      #tv_series-r.tab-pane
-        = render partial: 'media', collection: @media
-
-      #subscribes-r.tab-pane
-        = render partial: 'media', collection: @media
+      #tv_series_tab.tab-pane
+        /= render partial: 'media', collection: @media
+      #subscribes_tab.tab-pane
+        /= render partial: 'media', collection: @media
 
   .menu.col-xs-2.col-sm-2.col-md-2.col-lg-1
 
     %ul.nav.nav-tabs.tabs-right
       %li.menu_item.active
-        %a{'data-toggle': 'tab', href: '#movies-r'}
+        %a{'data-toggle': 'tab', href: '#movies_tab'}
           =image_tag 'movies.png',     class: 'tab_icon_small'
       %li.menu_item
-        %a{'data-toggle': 'tab', href: '#tv_series-r'}
+        %a{'data-toggle': 'tab', href: '#tv_series_tab'}
           =image_tag 'tv_series.png',  class: 'tab_icon'
       %li.menu_item
-        %a{'data-toggle': 'tab', href: '#subscribes-r'}
+        %a{'data-toggle': 'tab', href: '#subscribes_tab'}
           =image_tag 'subscribes.png', class: 'tab_icon'
