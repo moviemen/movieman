@@ -5,7 +5,10 @@
   = require bootstrap-material-design
 */
 
-// -------------------- global classes --------------------
+// ------------------------ global ------------------------
+
+@import 'growlyflash';
+
 .text-white { 
   color: #ffffff;
 }

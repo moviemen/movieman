@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require bootstrap-material-design
+//= require growlyflash
 //= require turbolinks
 //= require_tree .

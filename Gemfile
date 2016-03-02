@@ -22,6 +22,7 @@ gem 'turbolinks',   '~> 5.x'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-material-design'
 gem 'bootstrap_form'
+gem 'growlyflash'
 gem 'haml-rails'
 
 gem 'devise', git: 'git://github.com/plataformatec/devise.git', branch: 'master'
