@@ -24,7 +24,7 @@ html {
 }
 
 body {
-  overflow-y: hidden;
+  #overflow-y: hidden;
   background:              url('bg.jpg');
   background-size:         100%;
   -moz-background-size:    100%;
@@ -74,7 +74,14 @@ body {
           padding-top:    15px;
           padding-bottom: 30px;
 
-          overflow-y : auto;
+          overflow: hidden;
+
+          .tab-content {
+            height:300px;
+            overflow: auto;
+            z-index: -1000;
+            padding-right: 10px;
+          }
         }
 
         .menu {

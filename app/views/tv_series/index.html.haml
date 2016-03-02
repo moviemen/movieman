@@ -3,30 +3,29 @@
     %input.form-control.white-text.input-lg{placeholder: '   type a search phrase, baby', type: 'text'}
     %span.glyphicon.glyphicon-search.link-white
 
-.tv_series
-  .row
-    .medias.col-xs-10.col-sm-10.col-md-10.col-lg-11
+.row.tv_series
+  .medias.col-xs-10.col-sm-10.col-md-10.col-lg-11
 
-      .tab-content
+    .tab-content.center-block
 
-        #movies-r.tab-pane.active
-          = render partial: 'media', collection: @tv_series.shuffle
+      #movies-r.tab-pane.active
+        = render partial: 'media', collection: @tv_series.shuffle
 
-        #tv_series-r.tab-pane
-          = render partial: 'media', collection: @tv_series.shuffle
+      #tv_series-r.tab-pane
+        = render partial: 'media', collection: @tv_series.shuffle
 
-        #subscribes-r.tab-pane
-          = render partial: 'media', collection: @tv_series.shuffle
+      #subscribes-r.tab-pane
+        = render partial: 'media', collection: @tv_series.shuffle
 
-    .menu.col-xs-2.col-sm-2.col-md-2.col-lg-1
+  .menu.col-xs-2.col-sm-2.col-md-2.col-lg-1
 
-      %ul.nav.nav-tabs.tabs-right
-        %li.menu_item.active
-          %a{'data-toggle': 'tab', href: '#movies-r'}
-            =image_tag 'movies.png',     class: 'tab_icon_small'
-        %li.menu_item
-          %a{'data-toggle': 'tab', href: '#tv_series-r'}
-            =image_tag 'tv_series.png',  class: 'tab_icon'
-        %li.menu_item
-          %a{'data-toggle': 'tab', href: '#subscribes-r'}
-            =image_tag 'subscribes.png', class: 'tab_icon'
+    %ul.nav.nav-tabs.tabs-right
+      %li.menu_item.active
+        %a{'data-toggle': 'tab', href: '#movies-r'}
+          =image_tag 'movies.png',     class: 'tab_icon_small'
+      %li.menu_item
+        %a{'data-toggle': 'tab', href: '#tv_series-r'}
+          =image_tag 'tv_series.png',  class: 'tab_icon'
+      %li.menu_item
+        %a{'data-toggle': 'tab', href: '#subscribes-r'}
+          =image_tag 'subscribes.png', class: 'tab_icon'

@@ -1,7 +1,7 @@
 .thumbnail.for_media.pull-left
 
   %h5.thumbnail_header.text-white.pull-left
-    = (media.name.size > 17 ? "#{media.name[0..16]}..." : media.name)
+    = (media.name.size > 15 ? "#{media.name[0..14]}..." : media.name)
 
   .thumbnail_body
     = link_to media.sources.last.link, class: 'text-primary' do

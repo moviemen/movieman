@@ -2,7 +2,7 @@ class TvSeriesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tv_series = Media.tv_series.paginate(page: tv_series_params[:page], limit: 10)
+    @tv_series = Media.tv_series.paginate(page: tv_series_params[:page], limit: 60)
   end
 
   private
