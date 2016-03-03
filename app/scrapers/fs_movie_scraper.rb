@@ -32,10 +32,11 @@ class FsMovieScraper
           name:     s_name,
           type:     'movie',
           link:     s_url,
-          picture:  updates[:picture]
+          picture:  updates[:picture],
+          released: updates[:released]
       }
 
-      update_movie @media if @media[:season] && @media[:episode]
+      update_movie @media unless @media[:released].nil?
     end
 
     @page_number += 1
@@ -45,8 +46,9 @@ class FsMovieScraper
 
     def parse_movie_page url
       movie_page = @mechanize.get( url )
-      picture  = movie_page.search('.l-left .poster-main .images-show img').attr('src').value
-      {picture: picture}
+      picture    = movie_page.search('.l-left .poster-main .images-show img').attr('src').value
+      released   = movie_page.search('.b-filelist .filelist .folder .folder-language').empty? ? false : true
+      {picture: picture, released: released}
     end
 
   def update_movie media
