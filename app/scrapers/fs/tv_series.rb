@@ -66,14 +66,14 @@ class Fs::TvSeries
 
     if parsed_source
       if parsed_source.season.nil? || parsed_source.episode.nil?
-        parsed_source.update(season: media[:season], episode: media[:episode])
+        parsed_source.update!(season: media[:season], episode: media[:episode])
         puts "UPDATES FOR #{parsed_source.media.name} - new episode #{parsed_source.episode}"
       else
         if media[:season] == parsed_source.season && media[:episode] > parsed_source.episode
-          parsed_source.update(season: media[:season], episode: media[:episode])
+          parsed_source.update!(season: media[:season], episode: media[:episode])
           puts "UPDATES FOR #{parsed_source.media.name} - new episode #{parsed_source.episode}"
         elsif media[:season] > parsed_source.season
-          parsed_source.update(season: media[:season], episode: media[:episode])
+          parsed_source.update!(season: media[:season], episode: media[:episode])
           puts "UPDATES FOR #{parsed_source.media.name} - new episode #{parsed_source.episode}"
         else
           puts "NO CHANGES FOR #{parsed_source.media.name}"
