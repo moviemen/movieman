@@ -68,7 +68,7 @@ class Fs::Movie
 
     if parsed_source
       if parsed_source.released == false && media[:released]
-        parsed_source.update(released: media[:released])
+        parsed_source.update!(released: media[:released])
         puts "UPDATES FOR #{parsed_source.media.name} - released"
       else
         puts "NO CHANGES FOR #{parsed_source.media.name}"
