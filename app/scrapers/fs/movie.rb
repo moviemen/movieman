@@ -31,7 +31,7 @@ class Fs::Movie
       @media = {}
       @media = {
           name:     s_name,
-          type:     'movie',
+          type:     'movies',
           link:     s_url,
           picture:  updates[:picture],
           released: updates[:released]
@@ -75,7 +75,7 @@ class Fs::Movie
       end
     else
       Source.create link: media[:link], released: media[:released], media_id: parsed_media.id
-      puts "CREATE new movie #{parsed_media.name}"
+      puts "CREATE new movies #{parsed_media.name}"
     end
   end
 end

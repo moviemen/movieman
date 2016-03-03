@@ -21,4 +21,6 @@
 
 # Ignore parsed images
 /app/assets/images/tv_series/*
+/app/assets/images/movies/*
 !/app/assets/images/tv_series/.keep
+!/app/assets/images/movies/.keep

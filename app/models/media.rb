@@ -13,6 +13,6 @@ class Media
 
   default_scope -> { asc(:name) }
 
-  scope :movies,    -> { where(type: 'movie')     }
+  scope :movies, -> { where(type: 'movies')     }
   scope :tv_series, -> { where(type: 'tv_series') }
 end
