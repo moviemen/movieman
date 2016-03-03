@@ -12,9 +12,9 @@ jQuery ->
     $('.medias > .tab-content').css 'height', new_height
 
   reset_page_content = ->
-    $('#movies_tab').empty();
-    $('#tv_series_tab').empty();
-    $('#subscriptions_tab').empty();
+    $('#movies_tab').empty()
+    $('#tv_series_tab').empty()
+    $('#subscriptions_tab').empty()
 
   scroll_to_top = ->
     $('.medias > .tab-content').scrollTop(0)
@@ -57,7 +57,7 @@ jQuery ->
   $('a[data-toggle="tab"]').on 'shown.bs.tab', (e) ->
     current_page = 0
     next_page    = 1
-    reset_page_content
+    reset_page_content()
     load_page_with_media next_page
 
   # -- infinity scroll with pagination
