@@ -1,5 +1,10 @@
 jQuery ->
-  
+
+  current_page = 0
+  next_page    = 1
+
+  scroll_to_top
+
   # redraw scrolling block and hide scrollbar
 
   redraw_scrolling_div = ->
@@ -13,30 +18,48 @@ jQuery ->
   $(window).resize ->
     redraw_scrolling_div()
 
+  # tabs show events
+
+  $('a[data-toggle="tab"]').on 'shown.bs.tab', (e) ->
+    current_page = 0
+    next_page    = 1
+    reset_page_content
+    load_page_with_media next_page
+    scroll_to_top
+
   # infinity scroll with pagination
-
-  $('.medias > .tab-content').scrollTop 0
-
-  current_page = 0
-  next_page    = 1
 
   $('.medias > .tab-content').scroll (e) ->
     active_tab_id = $('.menu_item.active > a').attr('href')
-    type          = $('.menu_item.active > a').attr('data-type')
     medias        = $('.medias > .tab-content ' + active_tab_id + ' .thumbnail.for_media')
     per_page      = medias.length
 
     if $(medias[medias.length - 25]).is(':appeared') && next_page > current_page
-      $.ajax
-        type: 'GET'
-        url:  (type + '/')
-        data: ('page=' + next_page)
-        beforeSend: ->
-          current_page += 1
-        success: (response) ->
-          console.log 'success'
-          $('#' + type + '_tab').append response.data
-          next_page += 1
-        fail: (response) ->
-          console.log 'fail'
-          current_page -= 1
+      load_page_with_media next_page
+
+  page_type = ->
+    $('.menu_item.active > a').attr('data-type')
+
+  reset_page_content = ->
+    $('#movies_tab').empty();
+    $('#tv_series_tab').empty();
+    $('#subscriptions_tab').empty();
+
+  scroll_to_top = ->
+    $('.medias > .tab-content').scrollTop 0
+
+  load_page_with_media = (page) ->
+    type = page_type()
+    $.ajax
+      type: 'GET'
+      url:  (type + '/')
+      data: ('page=' + page)
+      beforeSend: ->
+        current_page += 1
+      success: (response) ->
+        console.log 'success'
+        $('#' + type + '_tab').append response.data
+        next_page += 1
+      fail: (response) ->
+        console.log 'fail'
+        current_page -= 1
