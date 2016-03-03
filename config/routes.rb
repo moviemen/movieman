@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :media,         only: [:index]
   resources :movies,        only: [:index]
   resources :tv_series,     only: [:index]
-  resources :subscriptions, only: [:index]
+  resources :subscriptions, only: [:index, :create, :delete]
 
   root to: 'media#index'
 
