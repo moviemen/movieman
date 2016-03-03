@@ -4,10 +4,4 @@ class MediaController < ApplicationController
   def index
   end
 
-  private
-
-  def media_params
-    params.permit(:page)
-  end
-
 end

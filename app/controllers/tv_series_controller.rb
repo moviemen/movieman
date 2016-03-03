@@ -2,10 +2,10 @@ class TvSeriesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tv_series = Media.tv_series.page(tv_series_params[:page])
-    data       = @tv_series.map{ |tv_series| render_to_string partial: 'media/tv_series', locals: {tv_series: tv_series} }
+    media = Media.tv_series.page(tv_series_params[:page])
+    data  = render_to_string partial: 'media/tv_series', collection: media
 
-    render json: {status: 200, data: data.join(''), total: @tv_series.count}
+    render json: {status: 200, data: data, total: media.count}
   end
 
   private

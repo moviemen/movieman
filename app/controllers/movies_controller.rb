@@ -2,10 +2,10 @@ class MoviesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @movies = Media.movies.page(movies_params[:page])
-    data    = @movies.map{ |movie| render_to_string partial: 'media/movie', locals: {movie: movie} }
+    media = Media.movies.page(movies_params[:page])
+    data  = render_to_string partial: 'media/movie', collection: media
 
-    render json: {status: 200, data: data.join(''), total: @movies.count}
+    render json: {status: 200, data: data, total: media.count}
   end
 
   private

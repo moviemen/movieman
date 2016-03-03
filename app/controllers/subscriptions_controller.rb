@@ -3,14 +3,11 @@ class SubscriptionsController < ApplicationController
   before_action :set_subscription,  only: [:destroy] 
 
   def index
-    media_ids      = current_user.subscriptions.pluck(:media_id)
-    @subscriptions = Media.where(:_id.in => media_ids).page(subscription_params[:page])
-    
-    data = @subscriptions.map do |subscription| 
-      render_to_string partial: 'media/subscription', locals: {subscription: subscription}
-    end
+    media_ids     = current_user.subscriptions.pluck(:media_id)
+    subscriptions = Media.where(:_id.in => media_ids).page(subscription_params[:page])
+    data          = render_to_string partial: 'media/subscription', collections: subscriptions
 
-    render json: {status: 200, data: data.join(''), total: @subscriptions.count}
+    render json: {status: 200, data: data, total: subscriptions.count}
   end
 
   def create
