@@ -6,6 +6,7 @@ class Source
   field :media_id, type: Integer
   field :season,   type: Integer, default: nil
   field :episode,  type: Integer, default: nil
+  field :released, type: Boolean, default: false
 
   belongs_to :media
 

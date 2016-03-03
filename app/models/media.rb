@@ -5,7 +5,7 @@ class Media
   field :type,         type: String
   field :name,         type: String
   field :picture,      type: String
-  field :released,     type: Boolean, default: false
+
 
   has_many :sources
   has_many :synonyms
