@@ -5,7 +5,7 @@ class SubscriptionsController < ApplicationController
   def index
     media_ids     = current_user.subscriptions.pluck(:media_id)
     subscriptions = Media.where(:_id.in => media_ids).page(subscription_params[:page])
-    data          = render_to_string partial: 'media/subscription', collections: subscriptions
+    data          = render_to_string partial: 'media/subscription', collection: subscriptions
 
     render json: {status: 200, data: data, total: subscriptions.count}
   end
