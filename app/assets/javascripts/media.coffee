@@ -34,13 +34,16 @@ jQuery ->
       fail: (response) ->
         console.log 'fail'
         current_page -= 1
+      complete:
+        if current_page == 1
+          scroll_to_top
 
   # -- init page
 
   current_page = 0
   next_page    = 1
 
-  scroll_to_top
+  load_page_with_media next_page
 
   # -- redraw scrolling block and hide scrollbar
 
@@ -56,7 +59,6 @@ jQuery ->
     next_page    = 1
     reset_page_content
     load_page_with_media next_page
-    scroll_to_top
 
   # -- infinity scroll with pagination
 
