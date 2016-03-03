@@ -69,3 +69,33 @@ jQuery ->
 
     if $(medias[medias.length - 25]).is(':appeared') && next_page > current_page
       load_page_with_media next_page
+
+  # -- subscription events
+
+  $('.tab-content').on 'click', '.unsubscribe', ->
+    subscription_id = $(this).attr('subscription_id')
+    $.ajax
+      url:     ('/subscriptions/' + subscription_id)
+      type:    'DELETE'
+      success: (response) ->
+        subscribe_tag = $('.tab-content').find('.subscribe[media_id=' + response.media_id + ']')
+        subscribe_tag.removeClass('hidden').show()
+
+        unsubscribe_tag = subscribe_tag.next()
+        unsubscribe_tag.removeAttr('subscription_id')
+        unsubscribe_tag.hide()
+
+  $('.tab-content').on 'click', '.subscribe', ->
+    media_id = $(this).attr('media_id')
+    $.ajax
+      url:     '/subscriptions'
+      data:    ('media_id=' + media_id)
+      type:    'POST'
+      success: (response) ->
+        subscribe_tag = $('.tab-content').find('.subscribe[media_id=' + media_id + ']')
+        subscribe_tag.hide()
+
+        unsubscribe_tag = subscribe_tag.next()
+        unsubscribe_tag.attr('subscription_id', response.subscription_id)
+        unsubscribe_tag.removeClass('hidden').show()
+
