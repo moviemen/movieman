@@ -1,4 +1,4 @@
-class FsScraper
+class Fs::TvSeries
 
   def initialize
     @series_page = 'http://fs.to/video/serials/'
@@ -7,8 +7,8 @@ class FsScraper
     @page        = nil
   end
 
-  def sync_media
-    @page_number = 1
+  def sync
+    @page_number = 0
     #begin
       parse_page
     #rescue
