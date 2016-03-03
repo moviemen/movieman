@@ -22,19 +22,20 @@ jQuery ->
 
   $('.medias > .tab-content').scroll (e) ->
     active_tab_id = $('.menu_item.active > a').attr('href')
+    type          = $('.menu_item.active > a').attr('data-type')
     medias        = $('.medias > .tab-content ' + active_tab_id + ' .thumbnail.for_media')
     per_page      = medias.length
 
     if $(medias[medias.length - 25]).is(':appeared') && next_page > current_page
       $.ajax
         type: 'GET'
-        url:  'media/'
+        url:  (type + '/')
         data: ('page=' + next_page)
         beforeSend: ->
           current_page += 1
         success: (response) ->
           console.log 'success'
-          $('#movies_tab').append response.data
+          $('#' + type + '_tab').append response.data
           next_page += 1
         fail: (response) ->
           console.log 'fail'

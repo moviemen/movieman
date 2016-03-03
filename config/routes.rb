@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users
 
-  resources :media, only: [:index]
+  resources :media,         only: [:index]
+  resources :movies,        only: [:index]
+  resources :tv_series,     only: [:index]
+  resources :subscriptions, only: [:index]
 
   root to: 'media#index'
 

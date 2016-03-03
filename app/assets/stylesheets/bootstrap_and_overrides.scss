@@ -18,6 +18,11 @@
   background-color: none !important;
   text-decoration:  none;
 }
+
+a {
+  outline:none !important;
+}
+
 // --------------------------------------------------------
 html {
   height: 100%;
@@ -66,7 +71,7 @@ body {
         }
       }
 
-      .tv_series {
+      .media_container {
         margin-top: 10px;
 
         .medias {
@@ -81,48 +86,48 @@ body {
             overflow: auto;
             z-index: -1000;
             padding-right: 10px;
+
+            .thumbnail.for_media {
+              width:                 155px;
+              float:                 left;
+              display:               block;
+              border:                none;
+              -webkit-border-radius: 0px;
+              -moz-border-radius:    0px;
+              border-radius:         0px;
+              background:            none;
+
+              margin-left:  15px;
+              margin-right: 10px;
+              margin-top:   15px;
+
+              .thumbnail_header {
+                margin-top:     0px;
+                margin-bottom:  5px;
+                margin-left:    4px;
+                opacity:        1;
+              }
+
+              .thumbnail_body {
+                .picture {
+                  max-width:  165px;
+                  max-height: 220px;
+                  opacity:    0.6;
+                }
+              }
+
+              .thumbnail_footer {
+                margin-top:     5px;
+                margin-bottom:  0px;
+                margin-left:    4px;
+                opacity:        1;
+              }
+            }
           }
         }
 
         .menu {
           padding-left: 0px;
-        }
-
-        .thumbnail.for_media {
-          width:                 155px;
-          float:                 left;
-          display:               block;
-          border:                none;
-          -webkit-border-radius: 0px;
-          -moz-border-radius:    0px;
-          border-radius:         0px;
-          background:            none;
-
-          margin-left:  15px;
-          margin-right: 10px;
-          margin-top:   15px;
-
-          .thumbnail_header {
-            margin-top:     0px;
-            margin-bottom:  5px;
-            margin-left:    4px;
-            opacity:        1;
-          }
-
-          .thumbnail_body {
-            .tv_series_picture {
-              max-width:  165px;
-              max-height: 220px;
-              opacity:    0.6 ;
-            }
-          }
-
-          .thumbnail_footer {
-            margin-top:     5px;
-            margin-bottom:  0px;
-            margin-left:    4px;
-            opacity:        1;
-          }
         }
       }
     }
