@@ -88,7 +88,9 @@ body {
             padding-right: 10px;
 
             .thumbnail.for_media {
-              width:                 155px;
+              width:  160px;
+              height: 260px;
+
               float:                 left;
               display:               block;
               border:                none;
@@ -110,9 +112,22 @@ body {
 
               .thumbnail_body {
                 .picture {
-                  max-width:  165px;
-                  max-height: 220px;
+                  width:  165px !important;
+                  height: 240px !important;
                   opacity:    0.6;
+                }
+
+                .contenthover {
+                  padding: 20px 20px 10px 20px;
+                  color: #fff;
+                }
+
+                .contenthover {
+                  p {
+                    margin: 0 0 10px 0;
+                    line-height: 1.4em;
+                    padding: 0;
+                  }
                 }
               }
 

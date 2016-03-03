@@ -16,16 +16,14 @@
     = favicon_link_tag 'apple-touch-icon-precomposed.png',         rel: 'apple-touch-icon-precomposed', type: 'image/png'
     = favicon_link_tag 'favicon.ico',                              rel: 'shortcut icon'
 
-    = javascript_include_tag 'application'
-
   %body
     
     .container
-      .row
-    
+      .row    
         .sidebar.hidden-xs.hidden-sm.col-md-3.col-lg-3
           = image_tag 'logo.png', class: 'logo center-block'
-
         .clo-xs-12.col-sm-12.col-md-offset-3.col-md-9.col-lg-offset-3.col-lg-9
           = growlyflash_static_notices
           = yield
+
+    = javascript_include_tag 'application'

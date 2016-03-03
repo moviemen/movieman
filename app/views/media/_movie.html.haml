@@ -4,16 +4,8 @@
     = (movie.name.size > 15 ? "#{movie.name[0..14]}..." : movie.name)
 
   .thumbnail_body
-    = link_to movie.sources.last.link, class: 'text-primary' do
-      = image_tag "#{movie.type}/#{movie.picture}", alt: movie.name, class: 'picture'
+    = image_tag "#{movie.type}/#{movie.picture}", alt: movie.name, class: 'picture'
+    = render partial: 'media/subscription_actions', locals: {media: movie}
 
   %h6.thumbnail_footer.text-white
-    - if subscription = movie.subscriptions.where(user_id: current_user.id).first
-      %span.glyphicon.glyphicon-ok.hidden.subscribe{media_id: movie.id.to_s}
-      %span.glyphicon.glyphicon-remove.unsubscribe{subscription_id: subscription.id.to_s}
-    - else
-      %span.glyphicon.glyphicon-ok.subscribe{media_id: movie.id.to_s}
-      %span.glyphicon.glyphicon-remove.hidden.unsubscribe
-
-    %span.pull-right
-      = movie.sources.last.released ? "Released" : "Soon"
+    %span.pull-right= movie.sources.last.released ? "Released" : "Soon"

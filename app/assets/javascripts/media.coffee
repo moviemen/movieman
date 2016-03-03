@@ -34,9 +34,16 @@ jQuery ->
       fail: (response) ->
         console.log 'fail'
         current_page -= 1
-      complete:
+      complete: ->
         if current_page == 1
           scroll_to_top
+        $('.thumbnail_body > img.picture').contenthover
+          overlay_background: 'none'
+          overlay_x_position: 'center'
+          overlay_y_position: 'center'
+          overlay_opacity:    1
+          effect:             'fade'
+          fade_spees:         250
 
   # -- init page
 
