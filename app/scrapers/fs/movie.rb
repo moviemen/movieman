@@ -10,7 +10,7 @@ class Fs::Movie
   def sync
     @page_number = 0
     #begin
-      parse_page
+    parse_page
     #rescue
     #  puts "\nTHE ERROR."
     #end
@@ -45,12 +45,15 @@ class Fs::Movie
   end
 
 
-    def parse_movie_page url
-      movie_page = @mechanize.get( url )
-      picture    = movie_page.search('.l-left .poster-main .images-show img').attr('src').value
-      released   = movie_page.search('.b-filelist .filelist .folder .folder-language').empty? ? false : true
-      {picture: picture, released: released}
-    end
+  def parse_movie_page url
+
+    movie_page = @mechanize.get( url )
+    picture    = movie_page.search('.l-left .poster-main .images-show img').attr('src').value
+    url = url + '?ajax&folder=0'
+    movie_page = @mechanize.get( url )
+    released   = !movie_page.search('.filelist .folder-language').empty?
+    {picture: picture, released: released}
+  end
 
   def update_movie media
     parsed_media  = Media.where(name: media[:name], type: media[:type]).first_or_create!
@@ -61,26 +64,18 @@ class Fs::Movie
       parsed_media.update(picture: picture_name)
     end
 
-    # parsed_source = parsed_media.sources.where(name: /fs.to/).first
-    #
-    # if parsed_source
-    #   if parsed_source.season.nil? || parsed_source.episode.nil?
-    #     parsed_source.update(season: media[:season], episode: media[:episode])
-    #     puts "UPDATES FOR #{parsed_source.media.name} - new episode #{parsed_source.episode}"
-    #   else
-    #     if media[:season] == parsed_source.season && media[:episode] > parsed_source.episode
-    #       parsed_source.update(season: media[:season], episode: media[:episode])
-    #       puts "UPDATES FOR #{parsed_source.media.name} - new episode #{parsed_source.episode}"
-    #     elsif media[:season] > parsed_source.season
-    #       parsed_source.update(season: media[:season], episode: media[:episode])
-    #       puts "UPDATES FOR #{parsed_source.media.name} - new episode #{parsed_source.episode}"
-    #     else
-    #       puts "NO CHANGES FOR #{parsed_source.media.name}"
-    #     end
-    #   end
-    # else
-    #   Source.create link: media[:link], season: media[:season], episode: media[:season], media_id: parsed_media.id
-    #   puts "CREATE new series #{parsed_media.name}"
-    # end
+    parsed_source = parsed_media.sources.where(link: /fs.to/).first
+
+    if parsed_source
+      if parsed_source.released == false && media[:released]
+        parsed_source.update(released: media[:released])
+        puts "UPDATES FOR #{parsed_source.media.name} - released"
+      else
+        puts "NO CHANGES FOR #{parsed_source.media.name}"
+      end
+    else
+      Source.create link: media[:link], released: media[:released], media_id: parsed_media.id
+      puts "CREATE new movie #{parsed_media.name}"
+    end
   end
 end
