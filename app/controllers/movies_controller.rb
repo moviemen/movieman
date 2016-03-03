@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Media.movies.page(movies_params[:page])
-    data    = @movies.map{ |movie| render_to_string partial: 'media/movies', locals: {movies: movie} }
+    data    = @movies.map{ |movie| render_to_string partial: 'media/movie', locals: {movie: movie} }
 
     render json: {status: 200, data: data.join(''), total: @movies.count}
   end
