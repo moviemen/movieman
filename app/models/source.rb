@@ -12,6 +12,8 @@ class Source
 
   after_update :notify_subscribers, if: :released?
 
+  validates_presence_of :link
+
   protected
 
   def released?
