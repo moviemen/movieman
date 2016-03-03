@@ -8,4 +8,11 @@
       = image_tag "#{tv_series.type}/#{tv_series.picture}", alt: tv_series.name, class: 'picture'
 
   %h6.thumbnail_footer.text-white
+    - if subscription = tv_series.subscriptions.where(user_id: current_user.id).first
+      %span.glyphicon.glyphicon-ok.hidden.subscribe{media_id: tv_series.id.to_s}
+      %span.glyphicon.glyphicon-remove.unsubscribe{subscription_id: subscription.id.to_s}
+    - else
+      %span.glyphicon.glyphicon-ok.subscribe{media_id: tv_series.id.to_s}
+      %span.glyphicon.glyphicon-remove.hidden.unsubscribe
+
     %span.pull-right= "s #{tv_series.sources.last.season} e #{tv_series.sources.last.episode}"
