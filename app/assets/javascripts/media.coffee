@@ -1,20 +1,24 @@
 jQuery ->
 
-  # --- page initialization
-
   current_page = 0
   next_page    = 1
 
   scroll_to_top
 
-  # --- redraw scrolling block and hide scrollbar
+  # redraw scrolling block and hide scrollbar
+
+  redraw_scrolling_div = ->
+    new_width  = $('.medias').width() + 50
+    new_height = $('html').height()   * 0.8
+    $('.medias > .tab-content').css 'width',  new_width
+    $('.medias > .tab-content').css 'height', new_height
 
   redraw_scrolling_div()
 
   $(window).resize ->
     redraw_scrolling_div()
 
-  # --- tabs show events
+  # tabs show events
 
   $('a[data-toggle="tab"]').on 'shown.bs.tab', (e) ->
     current_page = 0
@@ -23,7 +27,7 @@ jQuery ->
     load_page_with_media next_page
     scroll_to_top
 
-  # --- infinity scroll with pagination
+  # infinity scroll with pagination
 
   $('.medias > .tab-content').scroll (e) ->
     active_tab_id = $('.menu_item.active > a').attr('href')
@@ -32,15 +36,6 @@ jQuery ->
 
     if $(medias[medias.length - 25]).is(':appeared') && next_page > current_page
       load_page_with_media next_page
-
-
-  # --- methods
-
-  redraw_scrolling_div = ->
-    new_width  = $('.medias').width() + 50
-    new_height = $('html').height()   * 0.8
-    $('.medias > .tab-content').css 'width',  new_width
-    $('.medias > .tab-content').css 'height', new_height
 
   page_type = ->
     $('.menu_item.active > a').attr('data-type')
