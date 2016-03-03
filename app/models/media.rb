@@ -9,7 +9,7 @@ class Media
 
   has_many :sources
   has_many :synonyms
-  has_many :subscribes
+  has_many :subscriptions
 
   default_scope -> { asc(:name) }
 

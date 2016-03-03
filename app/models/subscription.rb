@@ -1,4 +1,4 @@
-class Subscribe
+class Subscription
   include Mongoid::Document
   include Mongoid::Timestamps
 
