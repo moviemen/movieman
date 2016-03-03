@@ -8,11 +8,9 @@
 
     .tab-content.center-block
       #movies_tab.tab-pane.active
-        = render partial: 'movie',        collection: @movies
+        = render partial: 'movie', collection: @movies
       #tv_series_tab.tab-pane
-        = render partial: 'tv_series',    collection: @tv_series
       #subscriptions_tab.tab-pane
-        = render partial: 'subscription', collection: @subscriptions
 
   .menu.col-xs-2.col-sm-2.col-md-2.col-lg-1
 

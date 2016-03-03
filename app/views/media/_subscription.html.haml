@@ -1,11 +1,1 @@
-.thumbnail.for_media.pull-left{id: subscription.id.to_s}
-
-  %h5.thumbnail_header.text-white.pull-left
-    = (subscription.name.size > 15 ? "#{subscription.name[0..14]}..." : subscription.name)
-
-  .thumbnail_body
-    = link_to subscription.sources.last.link, class: 'text-primary' do
-      = image_tag "#{subscription.type}/#{subscription.picture}", alt: subscription.name, class: 'picture'
-
-  %h6.thumbnail_footer.text-white
-    %span.pull-right subscription
+= render partial: "media/#{subscription.type.singularize}", locals: {movie: subscription, tv_series: subscription}
