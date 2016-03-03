@@ -74,7 +74,7 @@ jQuery ->
     medias        = $('.medias > .tab-content ' + active_tab_id + ' .thumbnail.for_media')
     per_page      = medias.length
 
-    if $(medias[medias.length - 25]).is(':appeared') && next_page > current_page
+    if $(medias[medias.length - 40]).is(':appeared') && next_page > current_page
       load_page_with_media next_page
 
   # -- subscription events
