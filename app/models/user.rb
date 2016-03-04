@@ -26,7 +26,7 @@ class User
   field :last_sign_in_ip,    type: String
 
   #Notify
-  field :email_notifiable,   type: Boolean, default: false
+  field :email_notified,   type: Boolean, default: false
 
   ## Confirmable
   # field :confirmation_token,   type: String

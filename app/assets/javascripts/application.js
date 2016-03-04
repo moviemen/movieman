@@ -16,4 +16,5 @@
 //= require bootstrap-material-design
 //= require growlyflash
 //= require turbolinks
+//= require notify
 //= require_tree .
