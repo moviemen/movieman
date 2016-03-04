@@ -10,7 +10,7 @@ class Media
   embeds_many :sources
   embeds_many :synonyms
 
-  has_and_belongs_to_many :users
+  has_and_belongs_to_many :users, index: true
 
   default_scope -> { asc(:name) }
 
@@ -24,4 +24,7 @@ class Media
   def picture_path
     "#{kind}/#{picture}"
   end
+
+  index({ kind: 1 }, { background: true })
+  index({ name: 1 }, { background: true, unique: true })
 end
