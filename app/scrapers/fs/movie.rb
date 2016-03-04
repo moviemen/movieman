@@ -31,7 +31,7 @@ class Fs::Movie
       @media = {}
       @media = {
           name:     s_name,
-          type:     'movies',
+          kind:     'movies',
           link:     s_url,
           picture:  updates[:picture],
           released: updates[:released]
@@ -56,7 +56,7 @@ class Fs::Movie
   end
 
   def update_movie media
-    parsed_media  = Media.where(name: media[:name], type: media[:type]).first_or_create!
+    parsed_media  = Media.where(name: media[:name], kind: media[:kind]).first_or_create!
 
     if parsed_media.picture.nil?
       picture_name = "#{parsed_media.id.to_s}#{File.extname(media[:picture])}"

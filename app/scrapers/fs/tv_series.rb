@@ -31,7 +31,7 @@ class Fs::TvSeries
       @media = {}
       @media = {
         name:     s_name,
-        type:     'tv_series',
+        kind:     'tv_series',
         link:     s_url,
         picture:  updates[:picture],
         season:   updates[:season],
@@ -54,7 +54,7 @@ class Fs::TvSeries
   end
 
   def update_episode media
-    parsed_media  = Media.where(name: media[:name], type: media[:type]).first_or_create!
+    parsed_media  = Media.where(name: media[:name], kind: media[:kind]).first_or_create!
 
     if parsed_media.picture.nil?
       picture_name = "#{parsed_media.id.to_s}#{File.extname(media[:picture])}"

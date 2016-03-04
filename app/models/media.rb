@@ -3,7 +3,7 @@ class Media
   include Mongoid::Timestamps
   include Mongoid::Attributes::Dynamic
 
-  field :type,         type: String
+  field :kind,         type: String
   field :name,         type: String
   field :picture,      type: String
 
@@ -14,14 +14,14 @@ class Media
 
   default_scope -> { asc(:name) }
 
-  scope :movies,    -> { where(type: 'movies')    }
-  scope :tv_series, -> { where(type: 'tv_series') }
+  scope :movies,    -> { where(kind: 'movies')    }
+  scope :tv_series, -> { where(kind: 'tv_series') }
 
   def movie?
-    type.eql? 'movies'
+    kind.eql? 'movies'
   end
 
   def picture_path
-    "#{type}/#{picture}"
+    "#{kind}/#{picture}"
   end
 end
