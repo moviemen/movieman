@@ -5,5 +5,5 @@ class Synonym
   field :name,     type: String
   field :media_id, type: Integer
 
-  belongs_to :media
+  embedded_in :media
 end

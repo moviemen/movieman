@@ -74,7 +74,7 @@ class Fs::Movie
         puts "NO CHANGES FOR #{parsed_source.media.name}"
       end
     else
-      Source.create link: media[:link], released: media[:released], media_id: parsed_media.id
+      parsed_media.sources.create link: media[:link], released: media[:released]
       puts "CREATE new movies #{parsed_media.name}"
     end
   end

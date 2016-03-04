@@ -80,7 +80,7 @@ class Fs::TvSeries
         end
       end
     else
-      Source.create link: media[:link], season: media[:season], episode: media[:season], media_id: parsed_media.id
+      parsed_media.sources.create link: media[:link], season: media[:season], episode: media[:season]
       puts "CREATE new series #{parsed_media.name}"
     end
   end

@@ -8,7 +8,7 @@ class Source
   field :episode,  type: Integer, default: nil
   field :released, type: Boolean, default: false
 
-  belongs_to :media
+  embedded_in :media
 
   after_update :notify_subscribers, if: :released?
 
