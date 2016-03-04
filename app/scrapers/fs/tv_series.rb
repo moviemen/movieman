@@ -1,9 +1,9 @@
 class Fs::TvSeries
 
-  def initialize
+  def initialize page_number=nil
     @series_page = 'http://fs.to/video/serials/'
     @mechanize   = Mechanize.new
-    @page_number = nil
+    @page_number = page_number
     @page        = nil
   end
 
@@ -18,6 +18,7 @@ class Fs::TvSeries
   end
 
   def parse_page
+    print @page_number
     @page = @mechanize.get( @series_page + "?page=#{@page_number}" )
     list  = @page.search('.b-section-list') 
 
@@ -38,7 +39,10 @@ class Fs::TvSeries
         episode:  updates[:episode]
       }
 
-      update_episode @media if @media[:season] && @media[:episode]
+      begin
+        update_episode @media if @media[:season] && @media[:episode]
+      rescue
+      end
     end
 
     @page_number += 1
@@ -67,21 +71,21 @@ class Fs::TvSeries
     if parsed_source
       if parsed_source.season.nil? || parsed_source.episode.nil?
         parsed_source.update!(season: media[:season], episode: media[:episode])
-        puts "UPDATES FOR #{parsed_source.media.name} - new episode #{parsed_source.episode}"
+        print 'u'
       else
         if media[:season] == parsed_source.season && media[:episode] > parsed_source.episode
           parsed_source.update!(season: media[:season], episode: media[:episode])
           puts "UPDATES FOR #{parsed_source.media.name} - new episode #{parsed_source.episode}"
         elsif media[:season] > parsed_source.season
           parsed_source.update!(season: media[:season], episode: media[:episode])
-          puts "UPDATES FOR #{parsed_source.media.name} - new episode #{parsed_source.episode}"
+          print 'u'
         else
-          puts "NO CHANGES FOR #{parsed_source.media.name}"
+          print '.'
         end
       end
     else
-      parsed_media.sources.create link: media[:link], season: media[:season], episode: media[:season]
-      puts "CREATE new series #{parsed_media.name}"
+      parsed_media.sources.create! link: media[:link], season: media[:season], episode: media[:season]
+      print 'c'
     end
   end
 

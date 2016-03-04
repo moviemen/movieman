@@ -1,22 +1,23 @@
 class Source
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Attributes::Dynamic
 
   field :link,     type: String
   field :media_id, type: Integer
-  field :season,   type: Integer, default: nil
-  field :episode,  type: Integer, default: nil
-  field :released, type: Boolean, default: false
+  field :season,   type: Integer
+  field :episode,  type: Integer
+  field :released, type: Boolean
 
   embedded_in :media
 
-  after_update :notify_subscribers, if: :released?
+  after_update :notify_subscribers, if: :is_released?
 
   validates_presence_of :link
 
   protected
 
-  def released?
+  def is_released?
     self.season_changed? or self.episode_changed?
   end
 

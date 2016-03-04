@@ -1,9 +1,9 @@
 class Fs::Movie
 
-  def initialize
+  def initialize page_number=nil
     @movies_page = 'http://fs.to/video/films/'
     @mechanize   = Mechanize.new
-    @page_number = nil
+    @page_number = page_number
     @page        = nil
   end
 
@@ -18,6 +18,7 @@ class Fs::Movie
   end
 
   def parse_page
+    print @page_number
     @page = @mechanize.get( @movies_page + "?page=#{@page_number}" )
     list  = @page.search('.b-section-list')
 
@@ -37,16 +38,17 @@ class Fs::Movie
           released: updates[:released]
       }
 
-      update_movie @media unless @media[:released].nil?
+      begin
+        update_movie @media unless @media[:released].nil?
+      rescue
+      end
     end
 
     @page_number += 1
     parse_page
   end
 
-
   def parse_movie_page url
-
     movie_page = @mechanize.get( url )
     picture    = movie_page.search('.l-left .poster-main .images-show img').attr('src').value
     url = url + '?ajax&folder=0'
@@ -69,13 +71,13 @@ class Fs::Movie
     if parsed_source
       if parsed_source.released == false && media[:released]
         parsed_source.update!(released: media[:released])
-        puts "UPDATES FOR #{parsed_source.media.name} - released"
+        print 'u'
       else
-        puts "NO CHANGES FOR #{parsed_source.media.name}"
+        print '.'
       end
     else
-      parsed_media.sources.create link: media[:link], released: media[:released]
-      puts "CREATE new movies #{parsed_media.name}"
+      parsed_media.sources.create! link: media[:link], released: media[:released]
+      print 'c'
     end
   end
 end

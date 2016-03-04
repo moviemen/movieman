@@ -1,11 +1,12 @@
 class Media
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Attributes::Dynamic
 
   field :kind,         type: String
   field :name,         type: String
   field :picture,      type: String
+
+  validates :name, uniqueness: {scope: :name} 
 
   embeds_many :sources
   embeds_many :synonyms
@@ -26,5 +27,5 @@ class Media
   end
 
   index({ kind: 1 }, { background: true })
-  index({ name: 1 }, { background: true, unique: true })
+  index({ name: 1, kind: 1 }, { background: true, unique: true })
 end
