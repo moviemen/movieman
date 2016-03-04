@@ -5,7 +5,17 @@
 
   .thumbnail_body
     = image_tag "#{tv_series.type}/#{tv_series.picture}", alt: tv_series.name, class: 'picture'
-    = render partial: 'media/subscription_actions', locals: {media: tv_series}
+    .contenthover
+      - if subscription = tv_series.user_ids.include?(current_user.id)
+        %p SUBSCRIBE
+        %p
+          %span.glyphicon.glyphicon-ok-circle.hidden.subscribe{media_id: tv_series.id.to_s}
+          %span.glyphicon.glyphicon-remove-circle.unsubscribe{subscription_id: subscription.id.to_s}
+      - else
+        %p UNSUBSCRIBE
+        %p
+          %span.glyphicon.glyphicon-ok-circle.subscribe{media_id: tv_series.id.to_s}
+          %span.glyphicon.glyphicon-remove-circle.hidden.unsubscribe
 
   %h6.thumbnail_footer.text-white
     %span.pull-right= "s #{tv_series.sources.last.season} e #{tv_series.sources.last.episode}"

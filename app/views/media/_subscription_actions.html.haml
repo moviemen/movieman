@@ -1,5 +1,0 @@
-.contenthover
-  - if subscription = media.user_ids.include?(current_user.id)
-    = render partial: 'media/subscription_create', locals: {media: media}
-  - else
-    = render partial: 'media/subscription_remove', locals: {media: media}
