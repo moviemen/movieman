@@ -2,7 +2,7 @@ class SubscriptionsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    subscriptions = current_user.media.page(subscription_params[:page])
+    subscriptions = Media.where(user_ids: current_user.id).page(subscription_params[:page])
     data          = render_to_string partial: 'media/subscription', collection: subscriptions
 
     render json: {status: 200, data: data, total: subscriptions.count}
