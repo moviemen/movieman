@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
     media = Media.movies.page(movies_params[:page])
     data  = render_to_string partial: 'media/movie', collection: media
 
-    render json: {status: 200, data: data, total: media.count}
+    render json: {status: 200, data: data}
   end
 
   private

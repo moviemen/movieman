@@ -4,17 +4,17 @@
     = (tv_series.name.size > 15 ? "#{tv_series.name[0..14]}..." : tv_series.name)
 
   .thumbnail_body
-    = image_tag "#{tv_series.type}/#{tv_series.picture}", alt: tv_series.name, class: 'picture'
+    = image_tag tv_series.picture_path, alt: tv_series.name, class: 'picture'
     .contenthover
-      - if subscription = tv_series.user_ids.include?(current_user.id)
+      - if current_user.subscribed?(tv_series.id)
         %p SUBSCRIBE
         %p
-          %span.glyphicon.glyphicon-ok-circle.hidden.subscribe{media_id: tv_series.id.to_s}
-          %span.glyphicon.glyphicon-remove-circle.unsubscribe{subscription_id: subscription.id.to_s}
+          %span.glyphicon.glyphicon-ok-circle.hidden.subscribe
+          %span.glyphicon.glyphicon-remove-circle.unsubscribe
       - else
-        %p UNSUBSCRIBE
+        %p SUBSCRIBE
         %p
-          %span.glyphicon.glyphicon-ok-circle.subscribe{media_id: tv_series.id.to_s}
+          %span.glyphicon.glyphicon-ok-circle.subscribe
           %span.glyphicon.glyphicon-remove-circle.hidden.unsubscribe
 
   %h6.thumbnail_footer.text-white

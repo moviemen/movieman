@@ -5,7 +5,7 @@ class TvSeriesController < ApplicationController
     media = Media.tv_series.page(tv_series_params[:page])
     data  = render_to_string partial: 'media/tv_series', collection: media
 
-    render json: {status: 200, data: data, total: media.count}
+    render json: {status: 200, data: data}
   end
 
   private

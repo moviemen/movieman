@@ -37,4 +37,8 @@ class User
   # field :locked_at,       type: Time
 
   has_and_belongs_to_many :media
+
+  def subscribed? media_id
+    media_ids.include? media_id
+  end
 end

@@ -4,19 +4,18 @@
     = (movie.name.size > 15 ? "#{movie.name[0..14]}..." : movie.name)
 
   .thumbnail_body
-    = image_tag "#{movie.type}/#{movie.picture}", alt: movie.name, class: 'picture'
+    = image_tag movie.picture_path, alt: movie.name, class: 'picture'
     .contenthover
-      - if subscription = movie.user_ids.include?(current_user.id)
-        %p SUBSCRIBE
-        %p
-          %span.glyphicon.glyphicon-ok-circle.hidden.subscribe{media_id: movie.id.to_s}
-          %span.glyphicon.glyphicon-remove-circle.unsubscribe{subscription_id: subscription.id.to_s}
-      - else
+      - if current_user.subscribed?(movie.id)
         %p UNSUBSCRIBE
         %p
-          %span.glyphicon.glyphicon-ok-circle.subscribe{media_id: movie.id.to_s}
+          %span.glyphicon.glyphicon-ok-circle.hidden.subscribe
+          %span.glyphicon.glyphicon-remove-circle.unsubscribe
+      - else
+        %p SUBSCRIBE
+        %p
+          %span.glyphicon.glyphicon-ok-circle.subscribe
           %span.glyphicon.glyphicon-remove-circle.hidden.unsubscribe
 
-
   %h6.thumbnail_footer.text-white
-    %span.pull-right= movie.sources.last.released ? "Released" : "Soon"
+    %span.pull-right= movie.sources.last.released ? 'Released' : 'Soon'
