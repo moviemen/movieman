@@ -24,9 +24,8 @@
           = image_tag 'logo.png', class: 'logo center-block'
           - if user_signed_in?
             .switch
-              = check_box_tag 'toggle', current_user.id , current_user.email_notified, class: 'email_subscribe'
-              -#%input{:name => "toggle", :type => "checkbox"}/
-              %label{:for => "toggle"}
+              = check_box_tag 'email_notifications', current_user.notification.mail
+              %label{for: 'email_notifications'}
                 %i
               %span
         .clo-xs-12.col-sm-12.col-md-offset-3.col-md-9.col-lg-offset-3.col-lg-9

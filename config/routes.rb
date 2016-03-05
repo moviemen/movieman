@@ -6,11 +6,8 @@ Rails.application.routes.draw do
   resources :movies,        only: [:index]
   resources :tv_series,     only: [:index]
   resources :subscriptions, only: [:index, :create, :destroy]
-  resources :notifications do
-    member do
-      post :subscribe_via_email
-    end
-  end
+
+  patch 'notifications', to: 'notifications#update'
 
   root to: 'media#index'
 
