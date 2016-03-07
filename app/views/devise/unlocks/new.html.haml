@@ -1,10 +1,15 @@
-%h2 Resend unlock instructions
-= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  .actions
-    = f.submit "Resend unlock instructions"
-= render "devise/shared/links"
+.panel.panel-default.devise-bs
+
+  .panel-heading
+    %h4= t('.resend_unlock_instructions', default: 'Resend unlock instructions')
+
+  .panel-body
+    = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: {method: :post, html: {role: 'form'} }) do |f|
+
+      .form-group
+        = f.label       :email
+        = f.email_field :email, autofocus: true, class: 'form-control'
+
+      = f.submit t('.resend_unlock_instructions', default: 'Resend unlock instructions'), class: 'btn btn-primary'
+
+= render 'devise/shared/links'
