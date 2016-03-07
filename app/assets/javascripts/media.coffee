@@ -96,7 +96,7 @@ jQuery ->
     media_id = $(this).closest('.thumbnail').attr('id')
     $.ajax
       url:     '/subscriptions'
-      data:    ('media_id=' + media_id)
+      data:    ('id=' + media_id)
       type:    'POST'
       success: (response) ->
         subscribe_tag = $('.tab-content').find('.subscribe[media_id=' + media_id + ']')
