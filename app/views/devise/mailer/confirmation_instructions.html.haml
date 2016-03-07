@@ -1,4 +1,11 @@
-%p
-  Welcome #{@email}!
-%p You can confirm your account email through the link below:
-%p= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token)
+\= bootstrap_devise_error_messages!
+\.panel.panel-default.devise-bs
+\.panel-heading
+\%h4= t('.resend_confirmation_instructions', :default =&gt; 'Resend confirmation instructions')
+\.panel-body
+\= form_for(resource, :as =&gt; resource_name, :url =&gt; confirmation_path(resource_name), :html =&gt; { :method =&gt; :post, role: "form" }) do |f|
+\.form-group
+\= f.label :email
+\= f.email_field :email, autofocus: true, class: "form-control"
+\= f.submit t('.resend_confirmation_instructions', :default =&gt; 'Resend confirmation instructions'), class: "btn btn-primary"
+\= render "devise/shared/links"
