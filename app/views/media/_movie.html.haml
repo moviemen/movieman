@@ -9,14 +9,14 @@
       - if current_user.subscribed?(movie.id)
         %p UNSUBSCRIBE
         %p
-          %span.glyphicon.glyphicon-ok-circle.hidden.subscribe
-          %span.glyphicon.glyphicon-remove-circle.unsubscribe
+          %span.glyphicon.glyphicon-ok-circle.hidden.subscribe{media_id: movie.id.to_s}
+          %span.glyphicon.glyphicon-remove-circle.unsubscribe{media_id: movie.id.to_s}
       - else
         %p.action
           SUBSCRIBE
         %p
           %span.glyphicon.glyphicon-ok-circle.subscribe{media_id: movie.id.to_s}
-          %span.glyphicon.glyphicon-remove-circle.hidden.unsubscribe
+          %span.glyphicon.glyphicon-remove-circle.hidden.unsubscribe{media_id: movie.id.to_s}
 
   %h6.thumbnail_footer.text-white
     %span.pull-right= movie.sources.last.released ? 'Released' : 'Soon'
