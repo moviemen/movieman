@@ -12,9 +12,10 @@
           %span.glyphicon.glyphicon-ok-circle.hidden.subscribe
           %span.glyphicon.glyphicon-remove-circle.unsubscribe
       - else
-        %p SUBSCRIBE
+        %p.action
+          SUBSCRIBE
         %p
-          %span.glyphicon.glyphicon-ok-circle.subscribe
+          %span.glyphicon.glyphicon-ok-circle.subscribe{media_id: movie.id.to_s}
           %span.glyphicon.glyphicon-remove-circle.hidden.unsubscribe
 
   %h6.thumbnail_footer.text-white

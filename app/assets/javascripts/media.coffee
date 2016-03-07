@@ -80,20 +80,19 @@ jQuery ->
   # -- subscription events
 
   $('.tab-content').on 'click', '.unsubscribe', ->
-    subscription_id = $(this).attr('subscription_id')
+    media_id = $(this).closest('.thumbnail').attr('id')
     $.ajax
-      url:     ('/subscriptions/' + subscription_id)
+      url:     ('/subscriptions/' + media_id)
       type:    'DELETE'
       success: (response) ->
-        subscribe_tag = $('.tab-content').find('.subscribe[media_id=' + response.media_id + ']')
+        subscribe_tag = $('.tab-content').find('.unsubscribe[media_id=' + media_id + ']')
         subscribe_tag.removeClass('hidden').show()
 
         unsubscribe_tag = subscribe_tag.next()
-        unsubscribe_tag.removeAttr('subscription_id')
         unsubscribe_tag.hide()
 
   $('.tab-content').on 'click', '.subscribe', ->
-    media_id = $(this).attr('media_id')
+    media_id = $(this).closest('.thumbnail').attr('id')
     $.ajax
       url:     '/subscriptions'
       data:    ('media_id=' + media_id)
@@ -103,6 +102,5 @@ jQuery ->
         subscribe_tag.hide()
 
         unsubscribe_tag = subscribe_tag.next()
-        unsubscribe_tag.attr('subscription_id', response.subscription_id)
         unsubscribe_tag.removeClass('hidden').show()
 
