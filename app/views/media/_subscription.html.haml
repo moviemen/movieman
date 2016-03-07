@@ -7,12 +7,14 @@
     = image_tag subscription.picture_path, alt: subscription.name, class: 'picture'
     .contenthover
       - if current_user.subscribed?(subscription.id)
-        %p UNSUBSCRIBE
+        %p{id: "action_#{subscription.id.to_s}"}
+          UNSUBSCRIBE
         %p
           %span.glyphicon.glyphicon-ok-circle.hidden.subscribe{media_id: subscription.id.to_s}
           %span.glyphicon.glyphicon-remove-circle.unsubscribe{media_id: subscription.id.to_s}
       - else
-        %p SUBSCRIBE
+        %p{id: "action_#{subscription.id.to_s}"}
+          SUBSCRIBE
         %p
           %span.glyphicon.glyphicon-ok-circle.subscribe{media_id: subscription.id.to_s}
           %span.glyphicon.glyphicon-remove-circle.hidden.unsubscribe{media_id: subscription.id.to_s}

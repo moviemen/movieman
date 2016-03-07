@@ -92,6 +92,8 @@ jQuery ->
         unsubscribe_tag = subscribe_tag.next()
         unsubscribe_tag.hide()
 
+        $('#action_' + media_id).text('SUBSCRIBE')
+
 
   $('.tab-content').on 'click', '.subscribe', ->
     media_id = $(this).closest('.thumbnail').attr('id')
@@ -105,4 +107,6 @@ jQuery ->
 
         unsubscribe_tag = subscribe_tag.next()
         unsubscribe_tag.removeClass('hidden').show()
+
+        $('#action_' + media_id).text('UNSUBSCRIBE')
 
