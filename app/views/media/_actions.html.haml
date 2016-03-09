@@ -1,0 +1,7 @@
+.contenthover.center-block
+  - if current_user.subscribed?(media.id)
+    = image_tag 'subscribe.png',   class: 'subscribe hidden', media_id: media.id.to_s
+    = image_tag 'unsubscribe.png', class: 'unsubscribe',      media_id: media.id.to_s
+  - else
+    = image_tag 'subscribe.png',   class: 'subscribe',          media_id: media.id.to_s
+    = image_tag 'unsubscribe.png', class: 'unsubscribe hidden', media_id: media.id.to_s
