@@ -1,5 +1,6 @@
 class SubscriptionsController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_media, only: [:create, :destroy]
 
   def index
     media = Media.where(user_ids: current_user.id).page(subscription_params[:page])
@@ -9,22 +10,25 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    if subscription = Subscription.create(user_id: current_user.id, media_id: subscription_params[:media_id])
-      render json: {status: 200, msg: 'OK.', subscription_id: subscription.id.to_s}
+    if @media.users << current_user
+      render json: { status: 200, msg: 'OK.'}
     end
   end
 
   def destroy
-    media_id = @subscription.media_id
-    if @subscription.delete
-      render json: {status: 200, msg: 'OK.', media_id: media_id.to_s}
+    if @media.users.delete(current_user)
+      render json: {status: 200, msg: 'OK.'}
     end
   end
 
   private
 
+  def find_media
+    @media = Media.find(subscription_params[:id])
+  end
+
   def subscription_params
-    params.permit(:page, :media_id, :id)
+    params.permit(:page, :id)
   end
 
 end

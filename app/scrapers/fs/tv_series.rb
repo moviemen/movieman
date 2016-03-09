@@ -66,7 +66,8 @@ class Fs::TvSeries
       parsed_media.update(picture: picture_name)
     end
 
-    parsed_source = parsed_media.sources.where(name: /fs.to/).first
+    parsed_source = parsed_media.sources.where(link: /fs.to/).first
+
 
     if parsed_source
       if parsed_source.season.nil? || parsed_source.episode.nil?
@@ -74,7 +75,7 @@ class Fs::TvSeries
         print 'u'
       else
         if media[:season] == parsed_source.season && media[:episode] > parsed_source.episode
-          parsed_source.update!(season: media[:season], episode: media[:episode])
+          parsed_source.update!(episode: media[:episode])
           puts "UPDATES FOR #{parsed_source.media.name} - new episode #{parsed_source.episode}"
         elsif media[:season] > parsed_source.season
           parsed_source.update!(season: media[:season], episode: media[:episode])
@@ -84,7 +85,7 @@ class Fs::TvSeries
         end
       end
     else
-      parsed_media.sources.create! link: media[:link], season: media[:season], episode: media[:season]
+      parsed_media.sources.create! link: media[:link], season: media[:season], episode: media[:episode]
       print 'c'
     end
   end
