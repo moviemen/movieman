@@ -113,3 +113,16 @@ jQuery ->
 
         $('#action_' + media_id).text('UNSUBSCRIBE')
 
+
+  # -- search events
+
+  $('#search').on 'input', ->
+    if $('#search').val().length >= 3
+      search_form = $('#search_form')
+      search_form.submit (response) ->
+      $.ajax
+        type: search_form.attr('method')
+        url: search_form.attr('action')
+        data: search_form.serialize()
+        success: (data) ->
+          console.log('ok')

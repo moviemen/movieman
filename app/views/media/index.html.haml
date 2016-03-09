@@ -1,6 +1,6 @@
-%form.form-inline.search-form.hidden-xs.hidden-sm
+= form_tag("/search", method: "get", id: 'search_form', class: 'form-inline search-form hidden-xs hidden-sm') do
   .form-group-white.pull-right
-    %input.form-control.white-text.input-lg{placeholder: '   type a search phrase, baby', type: 'text'}
+    = text_field_tag 'search', nil, placeholder: '   type a search phrase, baby', class: 'form-control white-text input-lg'
     %span.glyphicon.glyphicon-search.link-white
 
 .row.media_container

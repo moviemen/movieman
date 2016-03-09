@@ -4,6 +4,7 @@ class Media
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+
   field :kind,         type: String
   field :name,         type: String
   field :picture,      type: String
@@ -19,10 +20,6 @@ class Media
 
   scope :movies,    -> { where(kind: 'movies')    }
   scope :tv_series, -> { where(kind: 'tv_series') }
-
-  def as_indexed_json
-    as_json(except: [:id, :_id])
-  end
 
   def movie?
     kind.eql? 'movies'
