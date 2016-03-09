@@ -24,6 +24,7 @@ a {
 }
 
 // --------------------------------------------------------
+
 html {
   height: 100%;
 }
@@ -57,10 +58,17 @@ body {
         margin-bottom: 50px;
       }
 
+      .logo:hover {
+        -webkit-animation:                 swing 1s ease;
+        animation:                         swing 1s ease;
+        -webkit-animation-iteration-count: 2;
+        animation-iteration-count:         2;
+      }
+
       .notifications {
         display: block;
-        bottom: 30px;
-        color: #e0e0e0;
+        bottom:  30px;
+        color:   #e0e0e0;
 
         .notification_settings {
           margin-left: 50px;
@@ -134,11 +142,10 @@ body {
                   color: #fff;
 
                   .subscribe, .unsubscribe {
-                    padding-top: 30px;
+                    margin-top: 30px;
+                    opacity:    0.9;
                   }
-                }
 
-                .contenthover {
                   p {
                     margin: 0 0 10px 0;
                     line-height: 1.4em;
