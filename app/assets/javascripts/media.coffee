@@ -28,11 +28,9 @@ jQuery ->
       beforeSend: ->
         current_page += 1
       success: (response) ->
-        console.log 'success'
         $('#' + type + '_tab').append response.data
         next_page += 1
       fail: (response) ->
-        console.log 'fail'
         current_page -= 1
       complete: ->
         if current_page == 1
@@ -50,7 +48,8 @@ jQuery ->
   current_page = 0
   next_page    = 1
 
-  load_page_with_media next_page
+  if $('.medias').length > 0
+    load_page_with_media next_page
 
   # -- redraw scrolling block and hide scrollbar
 
