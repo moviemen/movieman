@@ -1,25 +1,19 @@
-.panel.panel-default.devise-bs
+.login_from
+  = form_for(resource, as: resource_name, url: session_path(resource_name), html: {role: 'form'}) do |f|
 
-  .panel-heading
-    %h4= t('.sign_in', default: 'Sign in')
+    .form-group-white
+      = f.label       :email, class: 'text-white'
+      = f.email_field :email, autofocus: true, class: 'form-control text-white'
 
-  .panel-body
-    = form_for(resource, as: resource_name, url: session_path(resource_name), html: {role: 'form'}) do |f|
+    .form-group-white
+      = f.label          :password, class: 'text-white'
+      = f.password_field :password, autocomplete: 'off', class: 'form-control text-white'
 
-      .form-group
-        = f.label       :email
-        = f.email_field :email, autofocus: true, class: 'form-control'
+    - if devise_mapping.rememberable?
+      .checkbox
+        = f.label :remember_me, class: 'text-white' do
+          = f.check_box_tag :remember_me, type: 'checkbox'
+          remember me
 
-      .form-group
-        = f.label          :password
-        = f.password_field :password, autocomplete: 'off', class: 'form-control'
-
-      - if devise_mapping.rememberable?
-        .checkbox
-          = f.label :remember_me do
-            = f.check_box :remember_me
-            remember me
-
-      = f.submit t('.sign_in', default: 'Sign in'), class: 'btn btn-primary'
-
-= render 'devise/shared/links'
+    = f.submit t('.sign_in', default: 'Sign in'), class: 'btn btn-primary btn-raised'
+    = render 'devise/shared/links'
