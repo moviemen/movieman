@@ -5,19 +5,12 @@
 
   .thumbnail_body
     = image_tag movie.picture_path, alt: movie.name, class: 'picture'
-    .contenthover
+    .contenthover.center-block
       - if current_user.subscribed?(movie.id)
-        %p{id: "action_#{movie.id.to_s}"}
-          UNSUBSCRIBE
-        %p
-          %span.glyphicon.glyphicon-ok-circle.hidden.subscribe{media_id: movie.id.to_s}
-          %span.glyphicon.glyphicon-remove-circle.unsubscribe{media_id: movie.id.to_s}
+        = image_tag 'subscribe.png',   class: 'subscribe hidden', media_id: movie.id.to_s
+        = image_tag 'unsubscribe.png', class: 'unsubscribe',      media_id: movie.id.to_s
       - else
-        %p{id: "action_#{movie.id.to_s}"}
-          SUBSCRIBE
-        %p
-          %span.glyphicon.glyphicon-ok-circle.subscribe{media_id: movie.id.to_s}
-          %span.glyphicon.glyphicon-remove-circle.hidden.unsubscribe{media_id: movie.id.to_s}
-
+        = image_tag 'subscribe.png',   class: 'subscribe',          media_id: movie.id.to_s
+        = image_tag 'unsubscribe.png', class: 'unsubscribe hidden', media_id: movie.id.to_s
   %h6.thumbnail_footer.text-white
     %span.pull-right= movie.sources.last.released ? 'Released' : 'Soon'
