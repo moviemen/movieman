@@ -24,7 +24,7 @@
           = image_tag 'logo.png', class: 'logo center-block'
           - if user_signed_in?
             .switch
-              = check_box_tag 'email_notifications', current_user.notification.mail
+              = check_box_tag 'email_notifications', '', current_user.notification.mail
               %label{for: 'email_notifications'}
                 %i
               %span
