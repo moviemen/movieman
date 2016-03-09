@@ -1,4 +1,5 @@
 .notifications
+
   .row.notification_settings
     .col-lg-7
       %h3 Email
@@ -7,6 +8,7 @@
         %label
           =check_box_tag 'email_notifications', nil, current_user.notification.mail
           %span
+
   .row.notification_settings
     .col-lg-7
       %h3 Facebook
@@ -15,6 +17,7 @@
         %label
           =check_box_tag 'facebook_notifications', nil, current_user.notification.facebook
           %span
+
   .row.notification_settings
     .col-lg-7
       %h3 Vkontakte
@@ -23,6 +26,7 @@
         %label
           =check_box_tag 'vkontakte_notifications', nil, current_user.notification.vkontakte
           %span
+
   .row.notification_settings
     .col-lg-7
       %h3 Twitter
