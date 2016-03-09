@@ -37,7 +37,7 @@ jQuery ->
       complete: ->
         if current_page == 1
           scroll_to_top
-        $('.thumbnail_body > img.picture').contenthover
+        $('.thumbnail[page=' + page + '] > .thumbnail_body > img.picture').contenthover
           overlay_background: 'none'
           overlay_x_position: 'center'
           overlay_y_position: 'center'
@@ -50,7 +50,8 @@ jQuery ->
   current_page = 0
   next_page    = 1
 
-  load_page_with_media next_page
+  if $('.medias').length > 0
+    load_page_with_media next_page
 
   # -- redraw scrolling block and hide scrollbar
 
@@ -74,7 +75,7 @@ jQuery ->
     medias        = $('.medias > .tab-content ' + active_tab_id + ' .thumbnail.for_media')
     per_page      = medias.length
 
-    if $(medias[medias.length - 40]).is(':appeared') && next_page > current_page
+    if $(medias[medias.length - 20]).is(':appeared') && next_page > current_page
       load_page_with_media next_page
 
   # -- subscription events

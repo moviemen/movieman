@@ -1,4 +1,4 @@
-.thumbnail.for_media.pull-left{id: subscription.id.to_s}
+.thumbnail.for_media.pull-left{id: subscription.id.to_s, page: params[:page]}
 
   %h5.thumbnail_header.text-white.pull-left
     = (subscription.name.size > 15 ? "#{subscription.name[0..14]}..." : subscription.name)
