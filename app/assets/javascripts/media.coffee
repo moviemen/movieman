@@ -40,8 +40,7 @@ jQuery ->
           overlay_x_position: 'center'
           overlay_y_position: 'center'
           overlay_opacity:    1
-          effect:             'fade'
-          fade_spees:         250
+          effect:             'slide'
 
   # -- init page
 
