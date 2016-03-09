@@ -100,6 +100,7 @@ body {
           padding-bottom: 30px;
 
           overflow: hidden;
+          ::-webkit-scrollbar { width: 0 !important }
 
           .tab-content {
             height:300px;
@@ -138,19 +139,15 @@ body {
                 }
 
                 .contenthover {
-                  padding: 20px 20px 10px 20px;
-                  color: #fff;
 
-                  .subscribe, .unsubscribe {
-                    margin-top: 30px;
-                    opacity:    0.9;
+                  a {
+                    min-width:     145px;
+                    margin-left:   10px;
+                    margin-right:  10px;
+                    margin-bottom: 0px;
+                    opacity:       1;
                   }
-
-                  p {
-                    margin: 0 0 10px 0;
-                    line-height: 1.4em;
-                    padding: 0;
-                  }
+                  
                 }
               }
 

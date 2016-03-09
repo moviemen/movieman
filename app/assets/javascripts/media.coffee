@@ -36,11 +36,12 @@ jQuery ->
         if current_page == 1
           scroll_to_top
         $('.thumbnail[page=' + page + '] > .thumbnail_body > img.picture').contenthover
-          overlay_background: 'none'
           overlay_x_position: 'center'
-          overlay_y_position: 'center'
-          overlay_opacity:    1
+          overlay_y_position: 'bottom'
+          overlay_height:     85
           effect:             'slide'
+          slide_speed:        300
+          slide_direction:    'bottom'
 
   # -- init page
 
