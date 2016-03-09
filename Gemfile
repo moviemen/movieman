@@ -31,6 +31,10 @@ gem 'cancancan', '~> 1.10'
 gem 'mechanize'
 gem 'kaminari'
 
+gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+
+
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
