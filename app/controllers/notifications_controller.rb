@@ -10,7 +10,7 @@ class NotificationsController < ApplicationController
   private
 
   def notification_params
-    params.permit(:mail)
+    params.permit(:mail, :facebook, :vkontakte, :twitter)
   end
 
 end

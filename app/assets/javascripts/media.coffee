@@ -47,11 +47,10 @@ jQuery ->
 
   # -- init page
 
-  if( $('.media').length > 0 )
-    current_page = 0
-    next_page    = 1
+  current_page = 0
+  next_page    = 1
 
-    load_page_with_media next_page
+  load_page_with_media next_page
 
   # -- redraw scrolling block and hide scrollbar
 

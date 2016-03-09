@@ -54,7 +54,19 @@ body {
       
       .logo {
         padding-top: 50px;
+        margin-bottom: 50px;
       }
+
+      .notifications {
+        display: block;
+        bottom: 30px;
+        color: #e0e0e0;
+
+        .notification_settings {
+          margin-left: 50px;
+        }
+      }
+
     }
 
     .row {

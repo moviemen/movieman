@@ -1,0 +1,99 @@
+.checkbox-slider--b-flat {
+  position: relative;
+  input {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 0%;
+    margin: 0 0;
+    cursor: pointer;
+    zoom: 1;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    opacity: 0;
+    filter: alpha(opacity = 0);
+    + span {
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      &:before {
+        position: absolute;
+        left: 0px;
+        display: inline-block;
+        content: "";
+        height: 20px;
+        width: 40px;
+        background: rgba(100, 100, 100, 0.2);
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8);
+        transition: background 0.2s ease-out;
+      }
+      > h4 {
+        display: inline;
+      }
+      padding-left: 40px;
+      &:after {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: 0px;
+        top: 0;
+        display: block;
+        background: #e0e0e0;
+        transition: margin-left 0.1s ease-in-out;
+        text-align: center;
+        font-weight: bold;
+        content: "";
+      }
+    }
+
+    + span {
+      padding-left: 40px;
+      &:before {
+        border-radius: 20px;
+        width: 40px;
+      }
+      &:after {
+        background: #e0e0e0;
+        content: "";
+        width: 30px;
+        border: solid transparent 2px;
+        background-clip: padding-box;
+        border-radius: 20px;
+      }
+    }
+
+  }
+}
+
+.checkbox-slider-md {
+  border: 2px solid #e0e0e0;
+  border-radius: 20px;
+  width: 64px;
+
+  line-height: 30px;
+  input {
+    + span {
+      padding-left: 60px;
+      &:before {
+        width: 60px;
+      }
+      &:after, &:before {
+        height: 30px;
+        line-height: 30px;
+      }
+      &:after {
+        width: 30px;
+        vertical-align: middle;
+      }
+    }
+    &:checked + span:after {
+      margin-left: 30px;
+    }
+  }
+}
