@@ -21,6 +21,7 @@ class Media
   scope :movies,    -> { where(kind: 'movies')    }
   scope :tv_series, -> { where(kind: 'tv_series') }
 
+
   def movie?
     kind.eql? 'movies'
   end
