@@ -1,32 +1,33 @@
-.row.notification_settings
-  .col-lg-7
-    %h3 Email
-  .col-lg-5
-    .checkbox.checkbox-slider--b-flat.checkbox-slider-md
-      %label
-        =check_box_tag 'email_notifications', current_user.notification.mail, current_user.notification.mail
-        %span
-.row.notification_settings
-  .col-lg-7
-    %h3 Facebook
-  .col-lg-5
-    .checkbox.checkbox-slider--b-flat.checkbox-slider-md
-      %label
-        =check_box_tag 'facebook_notifications', current_user.notification.facebook, current_user.notification.facebook
-        %span
-.row.notification_settings
-  .col-lg-7
-    %h3 Vkontakte
-  .col-lg-5
-    .checkbox.checkbox-slider--b-flat.checkbox-slider-md
-      %label
-        =check_box_tag 'vkontakte_notifications', current_user.notification.vkontakte, current_user.notification.vkontakte
-        %span
-.row.notification_settings
-  .col-lg-7
-    %h3 Twitter
-  .col-lg-5
-    .checkbox.checkbox-slider--b-flat.checkbox-slider-md
-      %label
-        =check_box_tag 'twitter_notifications', current_user.notification.twitter, current_user.notification.twitter
-        %span
+.notifications
+  .row.notification_settings
+    .col-lg-7
+      %h3 Email
+    .col-lg-5
+      .checkbox.checkbox-slider--b-flat.checkbox-slider-md
+        %label
+          =check_box_tag 'email_notifications', current_user.notification.mail, current_user.notification.mail
+          %span
+  .row.notification_settings
+    .col-lg-7
+      %h3 Facebook
+    .col-lg-5
+      .checkbox.checkbox-slider--b-flat.checkbox-slider-md
+        %label
+          =check_box_tag 'facebook_notifications', current_user.notification.facebook, current_user.notification.facebook
+          %span
+  .row.notification_settings
+    .col-lg-7
+      %h3 Vkontakte
+    .col-lg-5
+      .checkbox.checkbox-slider--b-flat.checkbox-slider-md
+        %label
+          =check_box_tag 'vkontakte_notifications', current_user.notification.vkontakte, current_user.notification.vkontakte
+          %span
+  .row.notification_settings
+    .col-lg-7
+      %h3 Twitter
+    .col-lg-5
+      .checkbox.checkbox-slider--b-flat.checkbox-slider-md
+        %label
+          =check_box_tag 'twitter_notifications', current_user.notification.twitter, current_user.notification.twitter
+          %span
