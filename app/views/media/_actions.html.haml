@@ -1,7 +1,20 @@
 .contenthover.center-block
+
   - if current_user.subscribed?(media.id)
-    = image_tag 'subscribe.png',   class: 'subscribe hidden', media_id: media.id.to_s
-    = image_tag 'unsubscribe.png', class: 'unsubscribe',      media_id: media.id.to_s
+    %a.btn.btn-sm.btn-primary.subscribe.hidden{media_id: media.id.to_s}
+      %i.glyphicon.glyphicon-ok
+      Subscribe
+    %a.btn.btn-sm.btn-primary.unsubscribe{media_id: media.id.to_s}
+      %i.glyphicon.glyphicon-trash
+      Unsubscribe
   - else
-    = image_tag 'subscribe.png',   class: 'subscribe',          media_id: media.id.to_s
-    = image_tag 'unsubscribe.png', class: 'unsubscribe hidden', media_id: media.id.to_s
+    %a.btn.btn-sm.btn-primary.subscribe{media_id: media.id.to_s}
+      %i.glyphicon.glyphicon-ok
+      Subscribe
+    %a.btn.btn-sm.btn-primary.unsubscribe.hidden{media_id: media.id.to_s}
+      %i.glyphicon.glyphicon-trash
+      Unsubscribe
+
+  %a.btn.btn-sm.btn-primary{href: media.sources.last.link, target: '_blank'}
+    %i.glyphicon.glyphicon-facetime-video
+    Watch now
