@@ -5,7 +5,7 @@
     .col-lg-5
       .checkbox.checkbox-slider--b-flat.checkbox-slider-md
         %label
-          =check_box_tag 'email_notifications', current_user.notification.mail, current_user.notification.mail
+          =check_box_tag 'email_notifications', nil, current_user.notification.mail
           %span
   .row.notification_settings
     .col-lg-7
@@ -13,7 +13,7 @@
     .col-lg-5
       .checkbox.checkbox-slider--b-flat.checkbox-slider-md
         %label
-          =check_box_tag 'facebook_notifications', current_user.notification.facebook, current_user.notification.facebook
+          =check_box_tag 'facebook_notifications', nil, current_user.notification.facebook
           %span
   .row.notification_settings
     .col-lg-7
@@ -21,7 +21,7 @@
     .col-lg-5
       .checkbox.checkbox-slider--b-flat.checkbox-slider-md
         %label
-          =check_box_tag 'vkontakte_notifications', current_user.notification.vkontakte, current_user.notification.vkontakte
+          =check_box_tag 'vkontakte_notifications', nil, current_user.notification.vkontakte
           %span
   .row.notification_settings
     .col-lg-7
@@ -29,5 +29,5 @@
     .col-lg-5
       .checkbox.checkbox-slider--b-flat.checkbox-slider-md
         %label
-          =check_box_tag 'twitter_notifications', current_user.notification.twitter, current_user.notification.twitter
+          =check_box_tag 'twitter_notifications', nil, current_user.notification.twitter
           %span

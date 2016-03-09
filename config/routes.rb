@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :tv_series,     only: [:index]
   resources :subscriptions, only: [:index, :create, :destroy]
 
+  match '/search', to: "media#search", via: "get"
+
   patch 'notifications', to: 'notifications#update'
 
   root to: 'media#index'
