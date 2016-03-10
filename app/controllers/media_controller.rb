@@ -5,9 +5,23 @@ class MediaController < ApplicationController
   end
 
   def search
-    media_ids = Media.search('*' + search_params[:search] + '*').records.pluck(:id)
+    media = Media.search('*' + search_params[:search] + '*').records
 
-    render json: {status: 200, data: media_ids}
+    case search_params[:media_kind]
+      when 'movies'
+        media = media.movies
+        kind = 'movie'
+      when 'tv_series'
+        media = media.tv_series
+        kind = 'tv_series'
+      when 'subscriptions'
+
+
+    end
+
+    data  = render_to_string partial: "media/#{kind}", collection: media
+
+    render json: {status: 200, data: data}
   end
 
   def search_params
