@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require bootstrap-material-design
-//= require plugins/growyflash
+//= require growlyflash
 //= require turbolinks
 //= require plugins/jquery.appear
 //= require plugins/jquery.contenthover
