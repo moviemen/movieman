@@ -6,7 +6,7 @@ class Media
   include Elasticsearch::Model::Callbacks
 
   field :kind,    type: String
-  field :names,   type: Array
+  field :name,    type: String
   field :link,    type: String
   field :picture, type: String
 
@@ -19,14 +19,14 @@ class Media
 
   scope :movies,    -> { where(kind: 'movies')    }
   scope :tv_series, -> { where(kind: 'tv_series') }
-
-  def name
-    names.first
-  end
-
-  def name=(value)
-    names << value
-  end
+  #
+  # def name
+  #   names.first
+  # end
+  #
+  # def name=(value)
+  #   names << value
+  # end
 
   def movie?
     kind.eql? 'movies'

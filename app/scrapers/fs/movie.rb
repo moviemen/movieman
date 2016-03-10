@@ -58,7 +58,7 @@ class Fs::Movie
   end
 
   def update_movie media
-    movie = Media::Movie.where(name: media[:name], kind: media[:kind]).first_or_initialize!
+    movie = Media::Movie.where(name: media[:name], kind: media[:kind]).first_or_initialize
 
     if movie.picture.nil?
       picture_name = "#{movie.id.to_s}#{File.extname(media[:picture])}"

@@ -1,6 +1,6 @@
-class Media::TvSeries
+class Media::TvSeries < Media
   include Mongoid::Document
-
+  include Mongoid::Attributes::Dynamic
   field :season,   type: Integer
   field :episode,  type: Integer
 
