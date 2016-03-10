@@ -1,17 +1,18 @@
 class Media
   include Mongoid::Document
   include Mongoid::Timestamps
+
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  field :kind,    type: String
+  field :names,   type: Array
+  field :link,    type: String
+  field :picture, type: String
 
-  field :kind,         type: String
-  field :name,         type: String
-  field :picture,      type: String
-
+  validates :link, presence: true
   validates :name, uniqueness: {scope: :name} 
 
-  embeds_many :sources
   embeds_many :synonyms
 
   has_and_belongs_to_many :users, index: true
@@ -21,9 +22,20 @@ class Media
   scope :movies,    -> { where(kind: 'movies')    }
   scope :tv_series, -> { where(kind: 'tv_series') }
 
+  def name
+    names.first
+  end
+
+  def name=(value)
+    names << value
+  end
 
   def movie?
     kind.eql? 'movies'
+  end
+
+  def tv_series?
+    kind.eql? 'tv_series'
   end
 
   def picture_path

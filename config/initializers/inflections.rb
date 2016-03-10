@@ -13,4 +13,5 @@
 ActiveSupport::Inflector.inflections(:en) do |inflect|
   inflect.acronym     'API'
   inflect.uncountable 'media'
+  inflect.uncountable 'series'
 end

@@ -1,19 +1,12 @@
-class Source
+class Media::TvSeries
   include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::Attributes::Dynamic
 
-  field :link,     type: String
-  field :media_id, type: Integer
   field :season,   type: Integer
   field :episode,  type: Integer
-  field :released, type: Boolean
-
-  embedded_in :media
 
   after_update :notify_subscribers, if: :is_released?
 
-  validates_presence_of :link
+  default_scope -> { where(kind: 'tv_series') }
 
   protected
 
@@ -22,14 +15,15 @@ class Source
   end
 
   def notify_subscribers
-    self.media.subscribes.pluck(:user_id).each do |user_id|
-      if premiere?
-        NewReleaseJob.new(user_id.to_s, self.media.name).enqueue
+    self.subscribes.pluck(:user_id).each do |user_id|
+      job = if premiere?
+        NewReleaseJob.new(user_id.to_s, self.name)
       elsif new_episode_released?
-        NewEpisodeJob.new(user_id.to_s, self.media.name, self.episode).enqueue
+        NewEpisodeJob.new(user_id.to_s, self.name, self.episode)
       elsif new_season_released?
-        NewSeasonJob.new(user_id.to_s, self.season, self.media.name).enqueue
+        NewSeasonJob.new(user_id.to_s, self.season, self.name)
       end
+      job.enqueue
     end
   end
 

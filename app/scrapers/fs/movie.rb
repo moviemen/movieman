@@ -31,11 +31,11 @@ class Fs::Movie
 
       @media = {}
       @media = {
-          name:     s_name,
-          kind:     'movies',
-          link:     s_url,
-          picture:  updates[:picture],
-          released: updates[:released]
+        name:     s_name,
+        kind:     'movies',
+        link:     s_url,
+        picture:  updates[:picture],
+        released: updates[:released]
       }
 
       begin
@@ -58,26 +58,17 @@ class Fs::Movie
   end
 
   def update_movie media
-    parsed_media  = Media.where(name: media[:name], kind: media[:kind]).first_or_create!
+    movie = Media::Movie.where(name: media[:name], kind: media[:kind]).first_or_initialize!
 
-    if parsed_media.picture.nil?
-      picture_name = "#{parsed_media.id.to_s}#{File.extname(media[:picture])}"
+    if movie.picture.nil?
+      picture_name = "#{movie.id.to_s}#{File.extname(media[:picture])}"
       @mechanize.get(media[:picture]).save( "#{Rails.root}/app/assets/images/movies/#{picture_name}" )
-      parsed_media.update(picture: picture_name)
+      movie.picture = picture_name
     end
 
-    parsed_source = parsed_media.sources.where(link: /fs.to/).first
-
-    if parsed_source
-      if parsed_source.released == false && media[:released]
-        parsed_source.update!(released: media[:released])
-        print 'u'
-      else
-        print '.'
-      end
-    else
-      parsed_media.sources.create! link: media[:link], released: media[:released]
-      print 'c'
-    end
+    movie.released = media[:released] if media[:released] && !movie.released
+    movie.link     =  media[:link]    if media[:released]
+    print '.' if movie.save!
   end
+
 end

@@ -58,36 +58,29 @@ class Fs::TvSeries
   end
 
   def update_episode media
-    parsed_media  = Media.where(name: media[:name], kind: media[:kind]).first_or_create!
+    tv_series = Media::TvSeries.where(name: media[:name], kind: media[:kind]).first_or_initialize!
 
-    if parsed_media.picture.nil?
-      picture_name = "#{parsed_media.id.to_s}#{File.extname(media[:picture])}"
+    if tv_series.picture.nil?
+      picture_name = "#{tv_series.id.to_s}#{File.extname(media[:picture])}"
       @mechanize.get(media[:picture]).save( "#{Rails.root}/app/assets/images/tv_series/#{picture_name}" )
-      parsed_media.update(picture: picture_name)
+      tv_series.picture = picture_name
     end
 
-    parsed_source = parsed_media.sources.where(link: /fs.to/).first
-
-
-    if parsed_source
-      if parsed_source.season.nil? || parsed_source.episode.nil?
-        parsed_source.update!(season: media[:season], episode: media[:episode])
-        print 'u'
-      else
-        if media[:season] == parsed_source.season && media[:episode] > parsed_source.episode
-          parsed_source.update!(episode: media[:episode])
-          puts "UPDATES FOR #{parsed_source.media.name} - new episode #{parsed_source.episode}"
-        elsif media[:season] > parsed_source.season
-          parsed_source.update!(season: media[:season], episode: media[:episode])
-          print 'u'
-        else
-          print '.'
-        end
-      end
+    if parsed_source.season.nil? || parsed_source.episode.nil?
+      tv_series.season  = media[:season]
+      tv_series.episode = media[:episode]
     else
-      parsed_media.sources.create! link: media[:link], season: media[:season], episode: media[:episode]
-      print 'c'
+      if media[:season] == tv_series.season && media[:episode] > tv_series.episode
+        tv_series.episode = media[:episode]
+      elsif media[:season] > tv_series.season
+        tv_series.season  = media[:season]
+        tv_series.episode = media[:episode]
+      end
     end
+
+    tv_series.link = media[:link]
+
+    print '.' if tv_series.save!
   end
 
 end
