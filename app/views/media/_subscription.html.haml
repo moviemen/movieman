@@ -10,6 +10,6 @@
   %h6.thumbnail_footer.text-white
     %span.pull-right
       - if subscription.movie?
-        = subscription.sources.last.released ? 'Released' : 'Soon'                        
+        = subscription.released ? 'Released' : 'Soon'
       - else
-        = "s #{subscription.sources.last.season} e #{subscription.sources.last.episode}"
+        = "s #{subscription.season} e #{subscription.episode}"

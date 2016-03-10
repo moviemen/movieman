@@ -7,4 +7,4 @@
     = image_tag movie.picture_path, alt: movie.name, class: 'picture'
     = render partial: 'media/actions', locals: {media: movie}
   %h6.thumbnail_footer.text-white
-    %span.pull-right= movie.sources.last.released ? 'Released' : 'Soon'
+    %span.pull-right= movie.released ? 'Released' : 'Soon'
