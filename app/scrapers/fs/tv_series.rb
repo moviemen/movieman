@@ -58,7 +58,7 @@ class Fs::TvSeries
   end
 
   def update_episode media
-    tv_series = Media::TvSeries.where(name: media[:name], kind: media[:kind]).first_or_initialize!
+    tv_series = Media::TvSeries.where(name: media[:name], kind: media[:kind]).first_or_initialize
 
     if tv_series.picture.nil?
       picture_name = "#{tv_series.id.to_s}#{File.extname(media[:picture])}"
@@ -66,7 +66,7 @@ class Fs::TvSeries
       tv_series.picture = picture_name
     end
 
-    if parsed_source.season.nil? || parsed_source.episode.nil?
+    if tv_series.season.nil? || tv_series.episode.nil?
       tv_series.season  = media[:season]
       tv_series.episode = media[:episode]
     else
@@ -79,7 +79,6 @@ class Fs::TvSeries
     end
 
     tv_series.link = media[:link]
-
     print '.' if tv_series.save!
   end
 
