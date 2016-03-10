@@ -13,8 +13,6 @@ class Media
   validates :link, presence: true
   validates :name, uniqueness: {scope: :name} 
 
-  embeds_many :synonyms
-
   has_and_belongs_to_many :users, index: true
 
   default_scope -> { asc(:name) }
